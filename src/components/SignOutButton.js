@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 function SignOutButton(props) {
   return (
-    <Link to="/login">
+    <Link className="no-underline" to="/login">
       <button
         onClick={() => props.function()}
-        className={`${props.color}-button`}
+        className={`${props.color}-button `}
         disabled={props.isDisabled && true}
       >
         <FiLogOut className=" text-lg" />

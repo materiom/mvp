@@ -2,6 +2,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import ArrowButton from "../components/ArrowButton";
+import DashboardHeader from "../components/DashboardHeader";
 import DashboardItem from "../components/DashboardItem";
 
 // Custom components
@@ -13,7 +14,8 @@ import profilePic from "./../images/profile.jpg";
 
 export default function Dashboard(props) {
   return (
-    <div className="min-h-[100vh] flex mx-24">
+    <div className="min-h-[100vh] w-full flex p-3">
+        <DashboardHeader/>
       <div className="flex flex-1 flex-col items-start w-full mt-24 ">
         <div className=" flex p-5 items-center w-full justify-center">
           <img
@@ -33,8 +35,8 @@ export default function Dashboard(props) {
             </h2>
           </div>
         </div>
-        <div className="flex h-[50%] flex-wrap m-auto">
-          <DashboardItem to="edit-profile" title={"View and Make Contributions"} />
+        <div className="flex h-[50%] flex-wrap m-auto w-full md:child:w-[50%]">
+          <DashboardItem to="edit-profile" title={"View & Make Contributions"} />
           <DashboardItem to="edit-profile" title={"User Directory"} />
           <DashboardItem to="edit-profile" title={"Data Commons"} />
           <DashboardItem to="edit-profile" title={"Edit Your profile"} />
