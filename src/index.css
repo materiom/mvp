@@ -53,11 +53,14 @@ a {
 .red-inverse-button {
     @apply flex text-MatRed border-[1px] border-MatRed text-xs p-2 rounded w-32 justify-around items-center;
   }
-
+/* 
 .blue-button {
   @apply flex text-white text-xs p-2 bg-MatBlue disabled:bg-slate-400 rounded w-32 justify-around items-center;
-}
+} */
 
+.blue-button {
+  @apply mx-auto flex text-white text-xs p-2 bg-MatBlue hover:invert disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
+}
 .white-button {
   @apply flex text-black border-[1px] no-underline border-MatDark text-xs p-2 disabled:bg-slate-400 rounded w-32 justify-around items-center;
 }
