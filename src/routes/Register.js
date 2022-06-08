@@ -1,26 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import RegistrationForm from "../components/RegistrationForm";
-import picture from "./../images/registration.jpg";
+import picture from "./../pictures/login/background.webp"
+import pattern from "./../pictures/login/pattern.svg"
 
-function Register() {
+
+
+function Login() {
   return (
     <div className="flex h-screen">
-      <div className="flex col h-full  w-4/12">
+      <div className="flex col h-full w-6/12">
         <img src={picture} alt="" className=" object-cover" />
       </div>
 
       <div className="flex col items-center justify-center h-full w-6/12">
         <RegistrationForm />
       </div>
-
-      <div className="flex col justify-center w-2/12 text-xs pt-5">
-        <p>
-          Already a member? <Link to="/login">Sign in now</Link>
-        </p>
-      </div>
+      <img src={pattern} alt="" className=" absolute bottom-0 right-0 -z-10 max-h-[75%]" />
     </div>
   );
 }
 
-export default Register;
+export default Login;
