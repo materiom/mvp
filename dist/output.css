@@ -2,7 +2,7 @@
   font-family: "Codec-Cold";
 
   src: local("MyFont"),
-      url(./Fonts/codec-pro.regular.ttf) format("truetype");
+      url(./fonts/codec-pro.regular.ttf) format("truetype");
 }
 
 /*

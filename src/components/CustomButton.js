@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function CustomButton(props) {
   return (
-    <Link to="/">
+    <Link to={props.link ? props.link : '#'}>
       <button
         onClick={() => props.function()}
         className={`${props.color}-button`}

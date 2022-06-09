@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Codec-Cold";
-  src: local("MyFont"), url(./Fonts/codec-pro.regular.ttf) format("truetype");
+  src: local("MyFont"), url(./fonts/codec-pro.regular.ttf) format("truetype");
 }
 
 @tailwind base;
