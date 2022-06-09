@@ -1,23 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
+import { hashPassword } from "../utils/user";
 
 function RegistrationForm() {
+
+  const [password, updatePassword] = useState('')
+
   return (
     <div
       className={`flex flex-col items-center justify-between p-5 
      w-[80%] max-w-[500px] rounded-[10px] absolute
      top-[25%] left-[45%] shadow-2xl bg-white`}
     >
-      <div className="text-center">
+      <div>
         <h1 className="text-3xl my-5">Get started</h1>
         <Link className=" no-underline" to="/login">
           Login
         </Link>
       </div>
       <div className="flex flex-col items-center h-full w-full">
-        <div className="flex flex-row justify-center items-center w-full"></div>
         <h3 className=" mr-auto my-5">OR</h3>
+
         <form className="h-full flex flex-col justify-around w-full">
           <div className="flex flex-col pb-3">
             <label htmlFor="">Name</label>
@@ -29,7 +33,7 @@ function RegistrationForm() {
           </div>
           <div className="flex flex-col pb-3">
             <label htmlFor="">Password</label>
-            <input type="password" />
+            <input value={password} onChange={(event) => updatePassword(event.target.value)} type="password" />
           </div>
           <div className="flex flex-col pb-3">
             <label htmlFor="">Confirm Password</label>
@@ -46,9 +50,8 @@ function RegistrationForm() {
           </div>
 
           <CustomButton
-            style={{ margin: "auto" }}
             displayText="Register"
-            function={() => alert("Working on it :)")}
+            function={() => hashPassword(password)}
             color="blue"
           />
         </form>
