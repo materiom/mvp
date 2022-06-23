@@ -1,7 +1,6 @@
 import React from "react";
-import CustomToggle from "./CustomToggle";
-import logo from "./../pictures/logo.png";
-import location from "./../pictures/directory/location.svg";
+import logo from "../../pictures/logo.png";
+import location from "../../pictures/directory/location.svg";
 
 export default function UserTableRow(props) {
   return (

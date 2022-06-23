@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import CustomToggle from "./CustomToggle";
-import filterIcon from "./../pictures/directory/filter.svg";
-import clearIcon from "./../pictures/directory/clear.svg";
+import CustomToggle from "./../CustomToggle";
+import filterIcon from "../../pictures/directory/filter.svg";
+import clearIcon from "../../pictures/directory/clear.svg";
 
 class UserFilterMenu extends Component {
   state = {};

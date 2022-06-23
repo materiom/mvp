@@ -1,20 +1,11 @@
 // Import dependencies
 import React from "react";
-import { Outlet } from "react-router-dom";
-import ArrowButton from "../components/ArrowButton";
-import Header from "../components/Header";
-import DashboardItem from "../components/DashboardItem";
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
 // Custom components
-import HelpBox from "../components/HelpBox";
-import SideBar from "../components/SideBar";
-import SignOutButton from "../components/SignOutButton";
-
-import profilePic from "./../pictures/profile.jpg";
-import CustomToggle from "../components/CustomToggle";
-import UserFilterMenu from "../components/UserFilterMenu";
-import UserTable from "../components/UserTable";
+import UserFilterMenu from "../components/userDirectory/UserFilterMenu";
+import UserTable from "../components/userDirectory/UserTable";
+import Header from "../components/Header";
 
 import {userData} from "./../testUsers"
 

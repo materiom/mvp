@@ -1,18 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
-import bcrypt from "bcryptjs"
-
-const checkPassword = (password) => {
-  bcrypt.compare(password, "", function(err, result) {
-    if (result) {
-      console.log("Correct!")
-   } else {
-    console.log("Wrong!")
-
-   }
-});
-}
 
 function RegistrationForm() {
   const [password, updatePassword] = useState("");
@@ -67,15 +55,15 @@ function RegistrationForm() {
             <label htmlFor="term" className=" text-xs">
               {" "}
               Creating an account means you are okay with our{" "}
-              <a href="#">Terms of Service</a>, <a href="#"> Privacy Policy</a>{" "}
-              and out default <a href="">Notification Setting</a>
+              <a href="/#">Terms of Service</a>, <a href="/#"> Privacy Policy</a>{" "}
+              and out default <a href="/#">Notification Setting</a>
             </label>
             <input  type="checkbox" className="custom-checkbox" />
           </div>
 
           <CustomButton
             displayText="Register"
-            function={() => checkPassword(password)}
+            function={() => alert("Needs work")}
             color="blue"
           />
         </form>

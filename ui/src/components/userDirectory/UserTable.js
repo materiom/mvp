@@ -1,7 +1,4 @@
 import React from "react";
-import CustomToggle from "./CustomToggle";
-import filterIcon from "./../pictures/directory/filter.svg";
-import location from "./../pictures/directory/location.svg";
 import UserTableRow from "./UserTableRow";
 import LazyLoad from "react-lazy-load"
 
@@ -13,7 +10,7 @@ export default function UserTable(props) {
         <UserTableRow key={user.id} user={user} />
       </LazyLoad>
     );
-    } else return
+    } else return 0
   });
   return (
     <div className="flex flex-col  p-5 bg-white rounded-lg max-h-[75vh] ">
