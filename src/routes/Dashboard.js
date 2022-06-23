@@ -1,58 +1,49 @@
 // Import dependencies
 import React from "react";
-import { Outlet } from "react-router-dom";
-import ArrowButton from "../components/ArrowButton";
-import DashboardHeader from "../components/DashboardHeader";
-import DashboardItem from "../components/DashboardItem";
+import Header from "../components/Header";
+import useUpdateTitle from "../hooks/UpdatePageTitle";
 
 // Custom components
 import HelpBox from "../components/HelpBox";
-import SideBar from "../components/SideBar";
-import SignOutButton from "../components/SignOutButton";
 
-import profilePic from "./../images/profile.jpg";
+import profilePic from "./../pictures/profile.jpg";
+import DashboardMenuItem from "../components/DashboardItem";
 
 export default function Dashboard(props) {
+  useUpdateTitle(props.title);
+
   return (
-    <div className="min-h-[100vh] w-full flex p-3">
-        <DashboardHeader/>
-      <div className="flex flex-1 flex-col items-start w-full mt-24 ">
-        <div className=" flex p-5 items-center w-full justify-center">
+    <div className=" w-full min-h-screen flex flex-col bg-neutral-100">
+      <Header activePage={"dashboard"} />
+      <div className="px-36 w-full h-full flex flex-col">
+        <div className="w-full flex rounded-xl bg-MatTeal h-32 items-center p-5">
           <img
             src={profilePic}
-            alt="User profile picture"
-            className="rounded-full max-h-32 min-h-[8rem] min mx-5"
+            alt=""
+            className="h-20 w-20 rounded-full mr-5"
           />
-          <div className="flex flex-col ml-5">
-            <h2 className=" text-3xl">Welcome back, Liam!</h2>
-            <h2 className=" text-3xl flex justify-between my-3">
-              👋
-              <ArrowButton
-                displayText="Edit Profile"
-                function={() => alert("Working on it :)")}
-                color="blue"
-              />
-            </h2>
+          <div className="flex flex-col">
+            <h6 className="text-sm text-slate-300">Dashboard</h6>
+            <h1 className=" text-3xl font-bold text-white">
+              Welcome back, Liam!
+            </h1>
           </div>
         </div>
-        <div className="flex h-[50%] flex-wrap m-auto w-full md:child:w-[50%]">
-          <DashboardItem to="edit-profile" title={"View & Make Contributions"} />
-          <DashboardItem to="edit-profile" title={"User Directory"} />
-          <DashboardItem to="edit-profile" title={"Data Commons"} />
-          <DashboardItem to="edit-profile" title={"Edit Your profile"} />
+        <div className="w-full h-full flex">
+          <div className="h-full flex justify-between flex-wrap w-2/3 group-odd:">
+            <DashboardMenuItem
+              title="contribute"
+              description={"View & Make Contributions"}
+            />
+            <DashboardMenuItem title="analyse" description={"Data Commons"} />
+            <DashboardMenuItem title="connect" description={"User Directory"} />
+            <DashboardMenuItem title="edit" description={"Your Profile"} />
+          </div>
+          <div className="w-1/3">
+            <HelpBox />
+          </div>
         </div>
       </div>
-      <div className="flex flex-col min-h-full mt-24 items-end">
-        <SignOutButton
-          displayText="Sign Out"
-          function={() => alert("Working on it :)")}
-          color="red-inverse"
-        />
-        <div className="m-auto">
-          <HelpBox />
-        </div>
-      </div>
-      <Outlet />
     </div>
   );
 }

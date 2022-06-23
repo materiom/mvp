@@ -8,7 +8,19 @@
 
 @font-face {
   font-family: "Codec-Cold";
-  src: local("MyFont"), url(./fonts/codec-pro.regular.ttf) format("truetype");
+  src: local("MyFont"), url(./fonts/Codec-Pro-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Codec-Pro-Italic";
+  src: local("MyFont"), url(./fonts/Codec-Pro-Italic.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Codec-Cold-Bold";
+  src: local("MyFont"), url(./fonts/Codec-Pro-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Codec-Cold-Extra-Bold";
+  src: local("MyFont"), url(./fonts/Codec-Pro-Extrabold.ttf) format("truetype");
 }
 
 @tailwind base;
@@ -26,9 +38,15 @@ body {
 body,
 html,
 .App {
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
 }
+
+input {
+  outline: none!important;
+}
+
 
 a {
   @apply text-MatBlue underline font-extrabold;
@@ -51,49 +69,70 @@ a {
 }
 
 .red-inverse-button {
-    @apply flex text-MatRed border-[1px] border-MatRed text-xs p-2 rounded w-32 justify-around items-center;
-  }
+  @apply flex text-MatRed border-[1px] border-MatRed text-xs p-2 rounded w-32 justify-around items-center;
+}
 /* 
 .blue-button {
   @apply flex text-white text-xs p-2 bg-MatBlue disabled:bg-slate-400 rounded w-32 justify-around items-center;
 } */
 
 .blue-button {
-  @apply mx-auto flex text-white text-xs p-2 bg-MatBlue hover:invert disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
+  @apply mx-auto flex text-white text-xs p-2 no-underline bg-MatBlue hover:bg-white hover:text-MatBlue border-[1px] border-MatBlue disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
 }
+
+.blue-squircle-button {
+  @apply mx-auto flex text-white text-xs p-2 no-underline bg-MatBlue hover:bg-white hover:text-MatBlue border-[1px] border-MatBlue disabled:bg-slate-400 rounded-lg w-full max-w-lg justify-around items-center;
+} 
+
 .white-button {
-  @apply flex text-black border-[1px] no-underline border-MatDark text-xs p-2 disabled:bg-slate-400 rounded w-32 justify-around items-center;
+  @apply h-6 mx-auto flex text-MatBlue text-xs p-2 no-underline bg-white hover:bg-MatBlue hover:text-white border-[1px] border-MatBlue disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
 }
 
-
-.blue-tab {
-  @apply h-2 w-20 border-t-4 rounded border-MatBlue transition-all;
+.custom-input {
+  @apply focus:shadow-none focus:ring-0 border-2 h-10
+  border-gray-200 focus:border-MatBlue rounded-lg;
 }
 
-#edit-sidebar .pro-inner-item {
-  padding: 0 !important;
+.custom-scrollbar {
+  @apply scrollbar  rounded scrollbar-track-white hover:scrollbar-thumb-MatLightTeal scrollbar-thumb-MatLightTeal;
 }
 
-input {
-  border: 0;
+.custom-hover-filter:hover {
+
+filter: invert(51%) sepia(39%) saturate(300%) hue-rotate(124deg) brightness(98%) contrast(90%);
 }
 
-ul > .pro-menu-item:nth-of-type(1) .pro-inner-item .pro-icon-wrapper {
-  background-color: var(--MatBlue)!important;
-  color: white;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
 }
 
-ul > .pro-menu-item:nth-of-type(2) .pro-inner-item .pro-icon-wrapper {
-  background-color: var(--MatOrange)!important;
-  color: white;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-MatLightTeal rounded-full;
 }
 
-ul > .pro-menu-item:nth-of-type(3) .pro-inner-item .pro-icon-wrapper {
-  background-color: var(--MatLight)!important;
-  color: var(--MatDark);
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply rounded-full bg-slate-200;
 }
 
-ul > .pro-menu-item:nth-of-type(4) .pro-inner-item .pro-icon-wrapper {
-  background-color: var(--MatRed)!important;
-  color: white;
+.dashboard-menu-item {
+  @apply w-1/2 min-w-[300px] min-h-[250px] max-w-md max-h-96 h-1/2;
+}
+
+.dashboard-menu-item:nth-child(odd) {
+  @apply pb-5 pt-5 pr-5;
+}
+
+.dashboard-menu-item:nth-child(even) {
+  @apply pb-5 pt-5 sm:pl-5 mr-auto;
+}
+
+.dashboard-menu-inner-item {
+  @apply flex 
+  flex-col bg-white rounded-lg p-5 border-2 border-white
+  h-full justify-around items-center  min-h-[250px]
+  hover:shadow-xl hover:border-MatTeal duration-300;
+}
+
+.data-filter-menu-item {
+  @apply flex justify-between text-MatGrey xl:text-base text-sm
 }
