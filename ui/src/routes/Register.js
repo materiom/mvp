@@ -4,16 +4,13 @@ import picture from "./../pictures/login/background.webp";
 import pattern from "./../pictures/login/pattern.svg";
 import logo from "./../pictures/full-logo.svg";
 import useUpdateTitle from "../hooks/UpdatePageTitle";
-import { Link } from "react-router-dom";
-
-fetch("http://localhost:3080/").then((res) => res.json());
 
 function Register(props) {
   useUpdateTitle(props.title);
 
   return (
     <div className="flex h-screen">
-      <a href="https://materiom.org" target="_blank">
+      <a href="https://materiom.org" target="_blank" rel="noreferrer">
         <img
           src={logo}
           alt=""

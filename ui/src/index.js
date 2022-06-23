@@ -2,7 +2,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
-import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
@@ -12,6 +11,7 @@ import Dashboard from "./routes/Dashboard";
 import EditProfile from "./routes/EditProfile";
 import Contribute from "./routes/Contribute";
 import UserDirectory from "./routes/UserDirectory";
+import DataCommons from "./routes/DataCommons";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -27,6 +27,7 @@ root.render(
           <Route path="contribute" element={<Contribute title="My Contributions - Materiom"/>} />
           <Route path="edit-profile" element={<EditProfile title="Edit Profile - Materiom" />} />
           <Route path="connect" element={<UserDirectory title="User Directory - Materiom" />} />
+          <Route path="analyse" element={<DataCommons title="User Directory - Materiom" />} />
         </Routes>
       </BrowserRouter>
     </Provider>

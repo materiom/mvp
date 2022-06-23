@@ -55,15 +55,15 @@ function RegistrationForm() {
             <label htmlFor="term" className=" text-xs">
               {" "}
               Creating an account means you are okay with our{" "}
-              <a href="#">Terms of Service</a>, <a href="#"> Privacy Policy</a>{" "}
-              and out default <a href="">Notification Setting</a>
+              <a href="/#">Terms of Service</a>, <a href="/#"> Privacy Policy</a>{" "}
+              and out default <a href="/#">Notification Setting</a>
             </label>
             <input  type="checkbox" className="custom-checkbox" />
           </div>
 
           <CustomButton
             displayText="Register"
-            function={() => console.log(password)}
+            function={() => alert("Needs work")}
             color="blue"
           />
         </form>

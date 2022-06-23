@@ -1,19 +1,13 @@
 // Import dependencies
 import React from "react";
-import { Outlet } from "react-router-dom";
-import ArrowButton from "../components/ArrowButton";
-import Header from "../components/DashboardHeader";
-import DashboardItem from "../components/DashboardItem";
+import Header from "../components/Header";
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
 // Custom components
 import HelpBox from "../components/HelpBox";
-import SideBar from "../components/SideBar";
-import SignOutButton from "../components/SignOutButton";
 
 import profilePic from "./../pictures/profile.jpg";
 import DashboardMenuItem from "../components/DashboardItem";
-import Contribute from "./Contribute";
 
 export default function Dashboard(props) {
   useUpdateTitle(props.title);
@@ -45,7 +39,7 @@ export default function Dashboard(props) {
             <DashboardMenuItem title="connect" description={"User Directory"} />
             <DashboardMenuItem title="edit" description={"Your Profile"} />
           </div>
-          <div className="w-1/3 h-full min-h-full">
+          <div className="w-1/3">
             <HelpBox />
           </div>
         </div>
