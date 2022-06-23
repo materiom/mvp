@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
+import bcrypt from "bcryptjs"
+
+const checkPassword = (password) => {
+  bcrypt.compare(password, "", function(err, result) {
+    if (result) {
+      console.log("Correct!")
+   } else {
+    console.log("Wrong!")
+
+   }
+});
+}
 
 function RegistrationForm() {
   const [password, updatePassword] = useState("");
@@ -63,7 +75,7 @@ function RegistrationForm() {
 
           <CustomButton
             displayText="Register"
-            function={() => console.log(password)}
+            function={() => checkPassword(password)}
             color="blue"
           />
         </form>

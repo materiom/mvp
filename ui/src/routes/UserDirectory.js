@@ -2,7 +2,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import ArrowButton from "../components/ArrowButton";
-import Header from "../components/DashboardHeader";
+import Header from "../components/Header";
 import DashboardItem from "../components/DashboardItem";
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
@@ -16,6 +16,8 @@ import CustomToggle from "../components/CustomToggle";
 import UserFilterMenu from "../components/UserFilterMenu";
 import UserTable from "../components/UserTable";
 
+import {userData} from "./../testUsers"
+
 export default function UserDirectory(props) {
   useUpdateTitle(props.title);
 
@@ -26,8 +28,8 @@ export default function UserDirectory(props) {
         <div className="flex flex-col w-1/3 overflow-hidden pr-5">
         <UserFilterMenu />
         </div>
-        <div className="flex flex-col w-2/3 overflow-hidden pr-5">
-          <UserTable/>
+        <div className="flex flex-col w-2/3 overflow-hidden ">
+          <UserTable users={userData}/>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import profile from "./../pictures/profile.jpg";
 
 function Header(props) {
   return (
-    <div className="w-screen min-h-[128px] h-32 flex px-36 justify-between items-center  bg-MatGrey mb-10">
+    <div className="w-screen min-h-[128px] min-w-[100vw] h-32 flex px-36 justify-between items-center  bg-MatGrey mb-10">
       <img
         src={logo}
         alt=""
@@ -27,10 +27,10 @@ function Header(props) {
         <div
           className={
             `h-full w-1/4 flex ` +
-            (props.activePage === "commons" && "bg-MatDarkGrey")
+            (props.activePage === "analyse" && "bg-MatDarkGrey")
           }
         >
-          <Link className="text-md m-auto text-white no-underline" to="/login">
+          <Link className="text-md m-auto text-white no-underline" to="/analyse">
             Data commons
           </Link>
         </div>

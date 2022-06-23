@@ -8,7 +8,19 @@
 
 @font-face {
   font-family: "Codec-Cold";
-  src: local("MyFont"), url(./fonts/codec-pro.regular.ttf) format("truetype");
+  src: local("MyFont"), url(./fonts/Codec-Pro-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Codec-Pro-Italic";
+  src: local("MyFont"), url(./fonts/Codec-Pro-Italic.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Codec-Cold-Bold";
+  src: local("MyFont"), url(./fonts/Codec-Pro-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Codec-Cold-Extra-Bold";
+  src: local("MyFont"), url(./fonts/Codec-Pro-Extrabold.ttf) format("truetype");
 }
 
 @tailwind base;
@@ -28,7 +40,13 @@ html,
 .App {
   min-height: 100%;
   min-width: 100%;
+  overflow: hidden;
 }
+
+input {
+  outline: none!important;
+}
+
 
 a {
   @apply text-MatBlue underline font-extrabold;
@@ -61,6 +79,11 @@ a {
 .blue-button {
   @apply mx-auto flex text-white text-xs p-2 no-underline bg-MatBlue hover:bg-white hover:text-MatBlue border-[1px] border-MatBlue disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
 }
+
+.blue-squircle-button {
+  @apply mx-auto flex text-white text-xs p-2 no-underline bg-MatBlue hover:bg-white hover:text-MatBlue border-[1px] border-MatBlue disabled:bg-slate-400 rounded-lg w-full max-w-lg justify-around items-center;
+} 
+
 .white-button {
   @apply h-6 mx-auto flex text-MatBlue text-xs p-2 no-underline bg-white hover:bg-MatBlue hover:text-white border-[1px] border-MatBlue disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
 }
@@ -92,7 +115,7 @@ filter: invert(51%) sepia(39%) saturate(300%) hue-rotate(124deg) brightness(98%)
 }
 
 .dashboard-menu-item {
-  @apply w-1/2 min-w-[320px] min-h-[250px] max-w-md max-h-96 h-1/2;
+  @apply w-1/2 min-w-[300px] min-h-[250px] max-w-md max-h-96 h-1/2;
 }
 
 .dashboard-menu-item:nth-child(odd) {
@@ -110,30 +133,6 @@ filter: invert(51%) sepia(39%) saturate(300%) hue-rotate(124deg) brightness(98%)
   hover:shadow-xl hover:border-MatTeal duration-300;
 }
 
-.blue-tab {
-  @apply h-2 w-20 border-t-4 rounded border-MatBlue transition-all;
-}
-
-#edit-sidebar .pro-inner-item {
-  padding: 0 !important;
-}
-
-ul > .pro-menu-item:nth-of-type(1) .pro-inner-item .pro-icon-wrapper {
-  background-color: var(--MatBlue) !important;
-  color: white;
-}
-
-ul > .pro-menu-item:nth-of-type(2) .pro-inner-item .pro-icon-wrapper {
-  background-color: var(--MatOrange) !important;
-  color: white;
-}
-
-ul > .pro-menu-item:nth-of-type(3) .pro-inner-item .pro-icon-wrapper {
-  background-color: var(--MatLight) !important;
-  color: var(--MatDark);
-}
-
-ul > .pro-menu-item:nth-of-type(4) .pro-inner-item .pro-icon-wrapper {
-  background-color: var(--MatRed) !important;
-  color: white;
+.data-filter-menu-item {
+  @apply flex justify-between text-MatGrey xl:text-base text-sm
 }

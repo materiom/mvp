@@ -2,7 +2,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import ArrowButton from "../components/ArrowButton";
-import Header from "../components/DashboardHeader";
+import Header from "../components/Header";
 import DashboardItem from "../components/DashboardItem";
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
@@ -45,7 +45,7 @@ export default function Dashboard(props) {
             <DashboardMenuItem title="connect" description={"User Directory"} />
             <DashboardMenuItem title="edit" description={"Your Profile"} />
           </div>
-          <div className="w-1/3 h-full min-h-full">
+          <div className="w-1/3">
             <HelpBox />
           </div>
         </div>
