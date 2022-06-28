@@ -15,7 +15,7 @@ export default function Dashboard(props) {
   return (
     <div className=" w-full min-h-screen flex flex-col bg-neutral-100">
       <Header activePage={"dashboard"} />
-      <div className="px-36 w-full h-full flex flex-col">
+      <div className="px-36 w-full h-full flex flex-col pt-5">
         <div className="w-full flex rounded-xl bg-MatTeal h-32 items-center p-5">
           <img
             src={profilePic}

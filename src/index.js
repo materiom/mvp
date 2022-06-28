@@ -13,6 +13,7 @@ import Contribute from "./routes/Contribute";
 import UserDirectory from "./routes/UserDirectory";
 import DataCommons from "./routes/DataCommons";
 import UserProfile from "./routes/UserProfile";
+import Recipe from "./routes/Recipe";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -31,6 +32,9 @@ root.render(
           <Route path="analyse" element={<DataCommons title="User Directory - Materiom" />} />
           <Route path="user-profile">
             <Route path=":userId" element={<UserProfile title="Profile - Materiom" />} />
+          </Route>
+          <Route path="recipe">
+            <Route path=":recipeId" element={<Recipe title="Recipe - Materiom" />} />
           </Route>
         </Routes>
       </BrowserRouter>

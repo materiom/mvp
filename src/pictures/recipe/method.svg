@@ -1,0 +1,15 @@
+<svg id="Method_Icon" data-name="Method Icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34.354" height="30.759" viewBox="0 0 34.354 30.759">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1416" data-name="Rectangle 1416" width="34.354" height="30.759" fill="#609690"/>
+    </clipPath>
+  </defs>
+  <g id="Group_1920" data-name="Group 1920" transform="translate(0 0)" clip-path="url(#clip-path)">
+    <path id="Path_2767" data-name="Path 2767" d="M19.167,15.212a.977.977,0,0,0,.977-.977V1.721a.977.977,0,0,0-.977-.977H8.588V2.7h9.6V13.259H12.8V11.8L8.866,14.069l-.286.156.26.156L12.8,16.673V15.212Z" transform="translate(13.767 1.194)" fill="#609690"/>
+    <path id="Path_2768" data-name="Path 2768" d="M11.455,3.585V5.054l4.217-2.435L11.455.184V1.632H2.99a4.119,4.119,0,0,1,.1.99,3.906,3.906,0,0,1-.1.964Z" transform="translate(4.797 0.295)" fill="#609690"/>
+    <path id="Path_2769" data-name="Path 2769" d="M21.438,18.052H2.073V7.5h10.5a4.794,4.794,0,0,1-.13-1.068,4.871,4.871,0,0,1,.078-.886H1.11a.984.984,0,0,0-.99.964V19.041a.967.967,0,0,0,.99.964H21.438v1.469l4.217-2.435L21.438,16.6Z" transform="translate(0.193 8.905)" fill="#609690"/>
+    <path id="Path_2770" data-name="Path 2770" d="M2.891,5.834A2.848,2.848,0,0,0,5.626,3.881a2.439,2.439,0,0,0,.182-.964,2.567,2.567,0,0,0-.182-.99A2.9,2.9,0,0,0,0,2.917,2.907,2.907,0,0,0,2.891,5.834" transform="translate(0 0)" fill="#609690"/>
+    <path id="Path_2771" data-name="Path 2771" d="M13.867,9.57a2.917,2.917,0,1,0,2.917,2.917A2.912,2.912,0,0,0,13.867,9.57" transform="translate(17.569 15.355)" fill="#609690"/>
+    <path id="Path_2772" data-name="Path 2772" d="M8.567,4.77A2.917,2.917,0,0,0,5.806,6.8a2.536,2.536,0,0,0-.156.886,2.888,2.888,0,0,0,.208,1.068A2.987,2.987,0,0,0,8.567,10.6a2.917,2.917,0,0,0,0-5.834" transform="translate(9.065 7.654)" fill="#609690"/>
+  </g>
+</svg>

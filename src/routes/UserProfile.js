@@ -20,6 +20,8 @@ import {
 } from "react-icons/bs";
 import ContributeYourItemCard from "../components/contribute/ContributeYourItemCard";
 
+import { ConvertHtmlToString } from "../hooks/ConvertHtmlToString"
+
 function UserProfile() {
   // get parameters from the router url
   const params = useParams();
@@ -92,11 +94,8 @@ function UserProfile() {
                   <h4 className=" text-MatTeal font-codecColdExtraBold mb-5">
                     About
                   </h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: user.bio === "NULL" ? "" : user.bio,
-                    }}
-                  />
+                  <h5>{user.bio === "NULL" ? "" : ConvertHtmlToString(user.bio)}</h5>
+          
                 </div>
               </div>
             </div>
