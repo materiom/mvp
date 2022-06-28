@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31.2" height="34.11" viewBox="0 0 31.2 34.11">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1418" data-name="Rectangle 1418" width="31.2" height="34.11" fill="#609690"/>
+    </clipPath>
+  </defs>
+  <g id="Material_properties_icon" data-name="Material properties icon" transform="translate(0 0)">
+    <g id="Group_1923" data-name="Group 1923" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <path id="Path_2778" data-name="Path 2778" d="M13.107,14.043A10.546,10.546,0,0,1,3.183,6.975H.97a12.6,12.6,0,0,0,24.275,0H23.032a10.546,10.546,0,0,1-9.924,7.068" transform="translate(2.493 17.925)" fill="#609690"/>
+      <path id="Path_2779" data-name="Path 2779" d="M13.082,2.767c2.892,3.641,8.032,10.745,9.817,15.707h2.249C22.9,11.334,14.331.875,13.9.375a1.087,1.087,0,0,0-1.642,0C12.082.589,9.9,3.266,7.441,6.765S2.265,14.618,1.087,18.153l-.107.321H3.265C5.192,13.048,10.94,5.48,13.082,2.767" transform="translate(2.518 0)" fill="#609690"/>
+      <path id="Path_2780" data-name="Path 2780" d="M12.744,7.917V5.775H1.071A1.074,1.074,0,0,0,0,6.846,1.052,1.052,0,0,0,1.071,7.917H12.744Z" transform="translate(0 14.841)" fill="#609690"/>
+      <path id="Path_2781" data-name="Path 2781" d="M16.843,5.775H5.17V7.917H16.843a1.052,1.052,0,0,0,1.071-1.071,1.074,1.074,0,0,0-1.071-1.071" transform="translate(13.286 14.841)" fill="#609690"/>
+      <path id="Path_2782" data-name="Path 2782" d="M4.837,2.747V18.426H3.77l2.138,3.7,2.135-3.7H6.979V2.747Z" transform="translate(9.688 7.059)" fill="#609690"/>
+    </g>
+  </g>
+</svg>

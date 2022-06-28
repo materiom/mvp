@@ -7,7 +7,7 @@ class DataFilterMenu extends Component {
   state = {};
   render() {
     return (
-      <div className="flex flex-col  p-5 bg-white rounded-lg max-h-[75vh] ">
+      <div className="flex flex-col  p-5 bg-white rounded-lg max-h-[80vh] ">
         <div className="flex items-center justify-between mb-5">
           <div className="flex w-1/4 justify-start items-center">
             <img src={filterIcon} alt="filter" className=" max-h-5" />

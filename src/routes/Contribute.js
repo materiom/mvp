@@ -50,9 +50,8 @@ export default function Contribute(props) {
           </h1>
 
           <div className="flex w-full justify-around mt-5">
-            <div className=" transition-all duration-300 flex items-center">
-              <BsChevronCompactLeft className=" text-4xl text-MatLightGrey" />
-            </div>
+            <BsChevronCompactLeft className="my-auto text-4xl text-MatLightGrey" />
+
             <ContributeYourItemCard />
             <ContributeYourItemCard />
             <ContributeYourItemCard />
@@ -75,9 +74,7 @@ export default function Contribute(props) {
                   alt="Contact support"
                 />
               </div>
-              <h1 className=" text-lg text-MatDarkGrey pl-3">
-                Need help?
-              </h1>
+              <h1 className=" text-lg text-MatDarkGrey pl-3">Need help?</h1>
               <div></div>
             </div>
           </div>
@@ -86,7 +83,7 @@ export default function Contribute(props) {
               <BsFillJournalBookmarkFill color="#609690" size={42} />
             </div>
             <h1 className=" text-lg font-codecColdBold text-MatTeal w-3/4">
-              Make a new contribution
+              Read contribution guide
             </h1>
           </div>
           <div className="flex-[1_0_18%]  mx-2 flex justify-center items-center h-full bg-MatNeutral border-[1px] transition duration-300 border-MatNeutral rounded-lg hover:border-MatTeal">
@@ -94,7 +91,7 @@ export default function Contribute(props) {
               <BsPlusSquare color="#609690" size={42} />
             </div>
             <h1 className=" text-lg font-codecColdBold text-MatTeal w-3/4">
-              Make a new contribution
+              Create new recipe
             </h1>
           </div>
           <div className="flex-[1_0_18%]  mx-2 flex justify-center items-center h-full bg-MatNeutral border-[1px] transition duration-300 border-MatNeutral rounded-lg hover:border-MatTeal">
@@ -102,7 +99,7 @@ export default function Contribute(props) {
               <BsFileEarmarkSpreadsheet color="#609690" size={42} />
             </div>
             <h1 className=" text-lg font-codecColdBold text-MatTeal w-3/4">
-              Make a new contribution
+              Contribute to existing recipe
             </h1>
           </div>
           <div className="flex-[1_0_18%]  mx-2 flex justify-center items-center h-full bg-MatNeutral border-[1px] transition duration-300 border-MatNeutral rounded-lg hover:border-MatTeal">

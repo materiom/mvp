@@ -6,11 +6,9 @@ export default function UserTable(props) {
   const tableRows = props.users.map((user, index) => {
     if (index < 20) {
     return (
-      <LazyLoad height={720} offsetVertical={0}>
         <UserTableRow key={user.id} user={user} />
-      </LazyLoad>
     );
-    } else return 0
+    }
   });
   return (
     <div className="flex flex-col  p-5 bg-white rounded-lg max-h-[75vh] ">

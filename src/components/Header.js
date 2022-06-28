@@ -6,11 +6,11 @@ import profile from "./../pictures/profile.jpg";
 
 function Header(props) {
   return (
-    <div className="w-screen min-h-[128px] min-w-[100vw] h-32 flex px-36 justify-between items-center  bg-MatGrey mb-10">
+    <div className="w-screen min-h-[128px] min-w-[100vw] h-[15vh] flex px-36 justify-between items-center  bg-MatGrey">
       <img
         src={logo}
         alt=""
-        href="materiom.org"
+        href="materiom.org" 
         className="mr-auto my-auto h-12 "
       />
       <div className="flex items-center justify-between h-full w-4/6 mx-36">

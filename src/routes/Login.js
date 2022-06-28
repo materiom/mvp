@@ -5,8 +5,6 @@ import pattern from "./../pictures/login/pattern.svg";
 import logo from "./../pictures/full-logo.svg";
 import useUpdateTitle from "./../hooks/UpdatePageTitle";
 
-fetch("http://localhost:3080/").then((res) => res.json());
-
 function Login(props) {
   useUpdateTitle(props.title);
 
