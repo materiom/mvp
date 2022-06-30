@@ -1,8 +1,30 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
 
 function LoginForm() {
+
+  const [email, updateEmail] = useState('')
+  const [password, updatePassword] = useState('')
+
+  const Login = async () => {
+    const rawResponse = await fetch('http://localhost:3042/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "email": email,
+        "password": password
+    })
+    });
+    const content = await rawResponse.json();
+  
+    console.log(content);
+  }
+
   return (
     <div
       className={`flex flex-col items-center justify-between p-5 
@@ -32,7 +54,7 @@ function LoginForm() {
           <div className="flex flex-col pb-5">
             <label htmlFor="">Email</label>
 
-            <input className="custom-input" type="email" />
+            <input className="custom-input" type="email" value={email} onChange={(event) => updateEmail(event.target.value)} />
           </div>
 
           <div className="flex flex-col pb-5">
@@ -42,13 +64,13 @@ function LoginForm() {
               <a href="#" className="">Forgotten password?</a>
             </div>
           
-            <input className="custom-input" type="password" />
+            <input className="custom-input" type="password" value={password} onChange={(event) => updatePassword(event.target.value)} />
           </div>
 
           <CustomButton
             style={{ margin: "auto" }}
             displayText="Login"
-            function={() => alert("Working on it :)")}
+            function={() => Login}
             color="blue"
           />
         </form>

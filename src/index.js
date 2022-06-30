@@ -36,6 +36,9 @@ root.render(
           <Route path="recipe">
             <Route path=":recipeId" element={<Recipe title="Recipe - Materiom" />} />
           </Route>
+          <Route path="ingredient">
+            <Route path=":ingredientId" element={<Recipe title="Recipe - Materiom" />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Provider>

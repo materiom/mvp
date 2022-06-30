@@ -3,33 +3,34 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 
 import logo from "../pictures/logo.png";
-import time from "../pictures/recipe/time.svg";
-import composition from "../pictures/recipe/composition.svg";
-import properties from "../pictures/recipe/properties.svg";
-import method from "../pictures/recipe/method.svg";
-import gallery from "../pictures/recipe/gallery.svg";
+import time from "../pictures/ingredient/time.svg";
+import composition from "../pictures/ingredient/composition.svg";
+import properties from "../pictures/ingredient/properties.svg";
+import method from "../pictures/ingredient/method.svg";
+import gallery from "../pictures/ingredient/gallery.svg";
 
 import { ConvertHtmlToString } from "../hooks/ConvertHtmlToString";
-import ToolsList from "../components/recipe/ToolsList";
-import ProcessList from "../components/recipe/ProcessList";
-import IngredientsList from "../components/recipe/IngredientsList";
-import MethodList from "../components/recipe/MethodList";
-import Gallery from "../components/recipe/Gallery";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import DifficultyIcon from "../components/recipe/DifficultyIcon";
 
-function Recipe() {
+import ToolsList from "../components/ingredient/ToolsList";
+import ProcessList from "../components/ingredient/ProcessList";
+import IngredientsList from "../components/ingredient/IngredientsList";
+import MethodList from "../components/ingredient/MethodList";
+import Gallery from "../components/ingredient/Gallery";
+import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import DifficultyIcon from "../components/ingredient/DifficultyIcon";
+
+function Ingredient() {
   // get parameters from the router url
   const params = useParams();
 
-  const [recipe, updateRecipe] = useState({});
+  const [ingredient, updateRecipe] = useState({});
 
-  // dummy fetch recipe data
+  // dummy fetch ingredient data
   const getRecipe = () => {
-    // const recipe = recipeData.filter((recipe) => recipe.id === params.recipeId);
-    // updateRecipe(recipe[0]);
-    // console.log(recipe[0]);
-    fetch(`https://materiom.org/api/recipe/${params.recipeId}`)
+    // const ingredient = recipeData.filter((ingredient) => ingredient.id === params.recipeId);
+    // updateRecipe(ingredient[0]);
+    // console.log(ingredient[0]);
+    fetch(`https://materiom.org/api/ingredient/${params.ingredientId}`)
       .then(function (response) {
         // The response is a Response instance.
         // You parse the data into a useable format using `.json()`
@@ -41,7 +42,7 @@ function Recipe() {
         updateRecipe(data);
       });
     // .then(data => updateRecipe(data))
-    // .finally(console.log(recipe))
+    // .finally(console.log(ingredient))
   };
 
   // update state upon first render
@@ -61,19 +62,19 @@ function Recipe() {
               <div className="flex flex-col items-start">
                 <h5 className="text-sm text-MatDarkGrey">
                   Ref:{" "}
-                  {recipe.ref_code
-                    ? ConvertHtmlToString(recipe.ref_code)
+                  {ingredient.ref_code
+                    ? ConvertHtmlToString(ingredient.ref_code)
                     : "N/A"}{" "}
                   |{" "}
-                  {recipe.created_at
+                  {ingredient.created_at
                     ? // the line below splits the date at the ' ' and returns
                       // the first part to remove the time and return the date only
-                      recipe.created_at.split(" ")[0]
+                      ingredient.created_at.split(" ")[0]
                     : "N/A"}{" "}
                   | V1
                 </h5>
                 <h4 className="capitalize font-codecColdExtraBold text-MatTeal">
-                  {recipe.name}
+                  {ingredient.name}
                 </h4>
               </div>
 
@@ -92,9 +93,9 @@ function Recipe() {
                   <img
                     className="w-full object-center object-cover min-w-full"
                     src={
-                      !recipe.thumbnail_src
+                      !ingredient.thumbnail_src
                         ? logo
-                        : `https://materiom.org/storage/${recipe.thumbnail_src}`
+                        : `https://materiom.org/storage/${ingredient.thumbnail_src}`
                     }
                   />
                 </div>
@@ -105,8 +106,8 @@ function Recipe() {
                         Created by:
                       </h5>
                       <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.author
-                          ? ConvertHtmlToString(recipe.author)
+                        {ingredient.author
+                          ? ConvertHtmlToString(ingredient.author)
                           : "N/A"}
                       </h6>
                     </div>
@@ -117,7 +118,7 @@ function Recipe() {
                         Contributors
                       </h5>
                       <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.contributors ? recipe.contributors : "N/A"}
+                        {ingredient.contributors ? ingredient.contributors : "N/A"}
                       </h6>
                     </div>
                     <div className="flex flex-col w-1/2">
@@ -125,8 +126,8 @@ function Recipe() {
                         Source
                       </h5>
                       <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.source
-                          ? ConvertHtmlToString(recipe.source)
+                        {ingredient.source
+                          ? ConvertHtmlToString(ingredient.source)
                           : "N/A"}
                       </h6>
                     </div>
@@ -137,8 +138,8 @@ function Recipe() {
                         License
                       </h5>
                       <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.license
-                          ? ConvertHtmlToString(recipe.license)
+                        {ingredient.license
+                          ? ConvertHtmlToString(ingredient.license)
                           : "N/A"}
                       </h6>
                     </div>
@@ -147,8 +148,8 @@ function Recipe() {
                         Difficulty
                       </h5>
                       <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.difficulty ? (
-                          <DifficultyIcon difficulty={recipe.difficulty} />
+                        {ingredient.difficulty ? (
+                          <DifficultyIcon difficulty={ingredient.difficulty} />
                         ) : (
                           "N/A"
                         )}
@@ -165,7 +166,7 @@ function Recipe() {
                     Description
                   </h5>
                   <h6 className="text-MatDarkGrey text-xs">
-                    {recipe.description ? recipe.description : "N/A"}
+                    {ingredient.description ? ingredient.description : "N/A"}
                   </h6>
                 </div>
 
@@ -175,7 +176,7 @@ function Recipe() {
                   </h5>
                   <h6 className="text-MatDarkGrey text-xs flex items-center">
                     <img src={time} alt="time icon" className="mr-1" />
-                    {recipe.prep_time ? recipe.prep_time : "N/A"}
+                    {ingredient.prep_time ? ingredient.prep_time : "N/A"}
                   </h6>
                 </div>
               </div>
@@ -184,7 +185,7 @@ function Recipe() {
                   <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                     Tools
                   </h5>
-                  {recipe.tools ? <ToolsList tools={recipe.tools} /> : "N/A"}
+                  {ingredient.tools ? <ToolsList tools={ingredient.tools} /> : "N/A"}
                 </div>
 
                 <div className="flex flex-col">
@@ -192,8 +193,8 @@ function Recipe() {
                     Process
                   </h5>
                   <h6 className="text-MatDarkGrey text-xs">
-                    {recipe.tools ? (
-                      <ProcessList processes={recipe.processes} />
+                    {ingredient.tools ? (
+                      <ProcessList processes={ingredient.processes} />
                     ) : (
                       "N/A"
                     )}
@@ -205,7 +206,7 @@ function Recipe() {
         </div>
         {/* user's recipes and contributions END*/}
 
-        {/* recipe ingredients START */}
+        {/* ingredient ingredients START */}
         <div className="flex w-full h-1/2 pt-5">
           <div className="w-full flex justify-start items-start rounded-lg bg-MatLightGrey">
             <div className="flex flex-col items-start w-1/2 pt-5 px-5 h-full bg-white rounded-lg">
@@ -216,8 +217,8 @@ function Recipe() {
                 </h4>
               </div>
               <div className="flex w-full">
-                {recipe.ingredients ? (
-                  <IngredientsList ingredients={recipe.ingredients} />
+                {ingredient.ingredients ? (
+                  <IngredientsList ingredients={ingredient.ingredients} />
                 ) : (
                   "N/A"
                 )}
@@ -236,9 +237,9 @@ function Recipe() {
             </div>
           </div>
         </div>
-        {/* recipe ingredients END*/}
+        {/* ingredient ingredients END*/}
 
-        {/* recipe's method START*/}
+        {/* ingredient's method START*/}
         <div className="flex flex-col w-full h-1/2">
           <div className="w-full h-full justify-around rounded-lg bg-white mt-5 pb-5">
             <div className="flex items-start w-full pt-5 px-5 h-full bg-white rounded-lg">
@@ -251,8 +252,8 @@ function Recipe() {
                 </div>
                 <div className="flex flex-col w-full">
                   <h5 className="mb-3 text-MatGrey">Steps</h5>
-                  {recipe.ingredients ? (
-                    <MethodList method={recipe.steps} />
+                  {ingredient.ingredients ? (
+                    <MethodList method={ingredient.steps} />
                   ) : (
                     "N/A"
                   )}
@@ -261,8 +262,8 @@ function Recipe() {
             </div>
           </div>
         </div>
-        {/* recipe's method END*/}
-        {/* recipe's method START*/}
+        {/* ingredient's method END*/}
+        {/* ingredient's method START*/}
         <div className="flex flex-col w-full h-1/2">
           <div className="w-full h-full justify-around rounded-lg bg-white mt-5 pb-5">
             <div className="flex items-start w-full pt-5 px-5 h-full bg-white rounded-lg">
@@ -276,8 +277,8 @@ function Recipe() {
                 <div className="flex w-full">
                   <BsChevronCompactLeft className="my-auto text-4xl text-MatLightGrey" />
 
-                  {recipe.ingredients ? (
-                    <Gallery gallery={recipe.gallery} />
+                  {ingredient.ingredients ? (
+                    <Gallery gallery={ingredient.gallery} />
                   ) : (
                     "N/A"
                   )}
@@ -288,10 +289,10 @@ function Recipe() {
             </div>
           </div>
         </div>
-        {/* recipe's method END*/}
+        {/* ingredient's method END*/}
       </div>
     </div>
   );
 }
 
-export default Recipe;
+export default Ingredient;

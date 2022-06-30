@@ -3,7 +3,28 @@ import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
 
 function RegistrationForm() {
+
+  const [email, updateEmail] = useState('')
   const [password, updatePassword] = useState("");
+
+  const Register = async () => {
+    const rawResponse = await fetch('http://localhost:3042/register', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "email": email,
+        "password": "password"
+    })
+    });
+    const content = await rawResponse.json();
+  
+    console.log(content);
+  }
+
+
 
   return (
     <div
@@ -37,15 +58,11 @@ function RegistrationForm() {
           </div>
           <div className="flex flex-col pb-3">
             <label htmlFor="">Email</label>
-            <input  className="custom-input" type="email" />
+            <input className="custom-input" type="email" value={email} onChange={(event) => updateEmail(event.target.value)} />
           </div>
           <div className="flex flex-col pb-3">
             <label htmlFor="">Password</label>
-            <input
-               className="custom-input" value={password}
-              onChange={(event) => updatePassword(event.target.value)}
-              type="password"
-            />
+            <input className="custom-input" type="password" value={password} onChange={(event) => updatePassword(event.target.value)} />
           </div>
           <div className="flex flex-col pb-3">
             <label htmlFor="">Confirm Password</label>
@@ -63,7 +80,7 @@ function RegistrationForm() {
 
           <CustomButton
             displayText="Register"
-            function={() => alert("Needs work")}
+            function={() => Register()}
             color="blue"
           />
         </form>
