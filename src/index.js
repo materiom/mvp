@@ -14,6 +14,13 @@ import UserDirectory from "./routes/UserDirectory";
 import DataCommons from "./routes/DataCommons";
 import UserProfile from "./routes/UserProfile";
 import Recipe from "./routes/Recipe";
+import NewRecipe from "./routes/NewRecipe";
+import NewRecipeTerms from "./routes/NewRecipeTerms";
+import NotFound from "./routes/NotFound";
+import 'react-image-crop/dist/ReactCrop.css';
+import NewRecipeName from "./routes/NewRecipeName";
+import NewRecipeFork from "./routes/NewRecipeFork";
+
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -23,22 +30,67 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard  title="My Dashboard - Materiom"/>}></Route>
-          <Route path="login" element={<Login title="Login - Materiom"/>} />
-          <Route path="register" element={<Register title="Register - Materiom"/>} />
-          <Route path="contribute" element={<Contribute title="My Contributions - Materiom"/>} />
-          <Route path="edit-profile" element={<EditProfile title="Edit Profile - Materiom" />} />
-          <Route path="connect" element={<UserDirectory title="User Directory - Materiom" />} />
-          <Route path="analyse" element={<DataCommons title="User Directory - Materiom" />} />
+        {/* 404 Page */}
+        <Route path='*' element={<NotFound />} />
+          <Route
+            path="/"
+            element={<Dashboard title="My Dashboard - Materiom" />}
+          ></Route>
+          <Route path="login" element={<Login title="Login - Materiom" />} />
+          <Route
+            path="register"
+            element={<Register title="Register - Materiom" />}
+          />
+          <Route
+            path="contribute"
+            element={<Contribute title="My Contributions - Materiom" />}
+          />
+          <Route
+            path="edit-profile"
+            element={<EditProfile title="Edit Profile - Materiom" />}
+          />
+          <Route
+            path="connect"
+            element={<UserDirectory title="User Directory - Materiom" />}
+          />
+          <Route
+            path="analyse"
+            element={<DataCommons title="User Directory - Materiom" />}
+          />
           <Route path="user-profile">
-            <Route path=":userId" element={<UserProfile title="Profile - Materiom" />} />
+            <Route
+              path=":userId"
+              element={<UserProfile title="Profile - Materiom" />}
+            />
           </Route>
           <Route path="recipe">
-            <Route path=":recipeId" element={<Recipe title="Recipe - Materiom" />} />
+            <Route
+              path=":recipeId"
+              element={<Recipe title="Recipe - Materiom" />}
+            />
           </Route>
           <Route path="ingredient">
-            <Route path=":ingredientId" element={<Recipe title="Recipe - Materiom" />} />
+            <Route
+              path=":ingredientId"
+              element={<Recipe title="Recipe - Materiom" />}
+            />
           </Route>
+          <Route
+            path="new-recipe"
+            element={<NewRecipe title="New Recipe - Materiom" />}
+          />
+          <Route
+            path="new-recipe/terms"
+            element={<NewRecipeTerms title="New Recipe - Materiom" />}
+          />
+          <Route
+            path="new-recipe/name"
+            element={<NewRecipeName title="New Recipe - Materiom" />}
+          />
+          <Route
+            path="new-recipe/fork"
+            element={<NewRecipeFork title="New Recipe - Materiom" />}
+          />
         </Routes>
       </BrowserRouter>
     </Provider>

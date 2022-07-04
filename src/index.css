@@ -44,9 +44,8 @@ html,
 }
 
 input {
-  outline: none!important;
+  outline: none !important;
 }
-
 
 a {
   @apply text-MatBlue underline font-extrabold;
@@ -71,18 +70,26 @@ a {
 .red-inverse-button {
   @apply flex text-MatRed border-[1px] border-MatRed text-xs p-2 rounded w-32 justify-around items-center;
 }
-/* 
-.blue-button {
-  @apply flex text-white text-xs p-2 bg-MatBlue disabled:bg-slate-400 rounded w-32 justify-around items-center;
-} */
 
 .blue-button {
-  @apply mx-auto flex text-white text-xs p-2 no-underline bg-MatBlue hover:bg-white hover:text-MatBlue border-[1px] border-MatBlue disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
+  @apply mx-auto flex  text-xs p-2 no-underline rounded-full w-[80%]
+   max-w-lg justify-around items-center transition duration-300
+  text-white bg-MatBlue  filter
+  hover:brightness-90
+  disabled:filter-none disabled:pointer-events-none disabled:bg-MatLightTeal disabled:text-white;
+}
+
+.grey-button {
+  @apply mx-auto flex rounded-full w-[80%] max-w-lg justify-around 
+  items-center text-xs p-2 no-underline transition duration-300
+  text-MatDarkGrey bg-MatLightGrey enabled:filter
+  hover:brightness-90
+  disabled:bg-MatLightGrey disabled:text-MatGrey;
 }
 
 .blue-squircle-button {
   @apply mx-auto flex text-white text-xs p-2 no-underline bg-MatBlue hover:bg-white hover:text-MatBlue border-[1px] border-MatBlue disabled:bg-slate-400 rounded-lg w-full max-w-lg justify-around items-center;
-} 
+}
 
 .white-button {
   @apply h-6 mx-auto flex text-MatBlue text-xs p-2 no-underline bg-white hover:bg-MatBlue hover:text-white border-[1px] border-MatBlue disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
@@ -98,8 +105,8 @@ a {
 }
 
 .custom-hover-filter:hover {
-
-filter: invert(51%) sepia(39%) saturate(300%) hue-rotate(124deg) brightness(98%) contrast(90%);
+  filter: invert(51%) sepia(39%) saturate(300%) hue-rotate(124deg)
+    brightness(98%) contrast(90%);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -134,5 +141,5 @@ filter: invert(51%) sepia(39%) saturate(300%) hue-rotate(124deg) brightness(98%)
 }
 
 .data-filter-menu-item {
-  @apply flex justify-between text-MatGrey xl:text-base text-sm
+  @apply flex justify-between text-MatGrey xl:text-base text-sm;
 }

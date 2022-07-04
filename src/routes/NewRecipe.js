@@ -17,8 +17,13 @@ import MethodList from "../components/recipe/MethodList";
 import Gallery from "../components/recipe/Gallery";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import DifficultyIcon from "../components/recipe/DifficultyIcon";
+import useUpdateTitle from "../hooks/UpdatePageTitle";
+import ContributePhotoCrop from "../components/contribute/ContributePhotoCrop";
 
-function Recipe() {
+function NewRecipe(props) {
+  // update page title
+  useUpdateTitle(props.title);
+
   // get parameters from the router url
   const params = useParams();
 
@@ -54,7 +59,7 @@ function Recipe() {
       <Header activePage="connect" />
 
       <div className="h-full flex justify-between flex-wrap w-full px-36 py-10 bg-MatLightGrey custom-scrollbar">
-        {/* users's recipes and contributions */}
+        {/* recipes details START */}
         <div className="flex flex-col w-full h-1/2">
           <div className="w-full h-full justify-around rounded-lg bg-white pl-5 pt-5 pb-5">
             <div className="flex justify-between pr-5 pb-5">
@@ -86,15 +91,22 @@ function Recipe() {
                 </div>
               </div>
             </div>
-            <div className="flex w-full h-72">
+            <div className="flex w-full min-w-full h-72">
               <div className="flex w-full">
-                <div className={"flex w-1/2 min-w-[50%] " + (!recipe.thumbnail_src &&  "bg-MatDarkGrey")}>
-                  {recipe.thumbnail_src && (
-                    <img
-                      className="w-full object-center object-cover min-w-full"
-                      src={`https://materiom.org/storage/${recipe.thumbnail_src}`}
-                    />
-                  )}
+                {/*
+                 {true ? (
+                  <div className=" z-10 absolute top-0 left-0 bg-MatLightGrey h-screen w-screen ">
+                     <ContributePhotoCrop  className="m-auto"/> 
+                  </div>
+                ) : (
+                  ""
+                )} 
+                */}
+                <div className="flex w-1/2 min-w-[50%]">
+                  <img
+                    className="w-full object-center object-cover min-w-full"
+                    src={""}
+                  />
                 </div>
                 <div className="flex flex-col justify-around w-1/2 bg-MatLightGrey p-5">
                   <div className="flex">
@@ -201,7 +213,7 @@ function Recipe() {
             </div>
           </div>
         </div>
-        {/* user's recipes and contributions END*/}
+        {/* recipes details END */}
 
         {/* recipe ingredients START */}
         <div className="flex w-full h-1/2 pt-5">
@@ -292,4 +304,4 @@ function Recipe() {
   );
 }
 
-export default Recipe;
+export default NewRecipe;
