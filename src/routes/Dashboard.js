@@ -10,6 +10,7 @@ import profilePic from "./../pictures/profile.jpg";
 import DashboardMenuItem from "../components/DashboardItem";
 
 export default function Dashboard(props) {
+  // update page title
   useUpdateTitle(props.title);
 
   return (

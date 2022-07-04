@@ -1,30 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { FiCircle, FiEye } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
+import register from "../db/register";
+
+const initialState = {
+  username: "",
+  email: "",
+  password: "",
+  passwordConfirmation: "",
+};
 
 function RegistrationForm() {
-
-  const [email, updateEmail] = useState('')
+  const [email, updateEmail] = useState("");
   const [password, updatePassword] = useState("");
+  const [passwordConfirm, updatePasswordConfirm] = useState("");
+  const [passwordsMatch, updatePasswordsMatch] = useState(false);
+  const [showPassword, handleShowPassword] = useState(false);
 
   const Register = async () => {
-    const rawResponse = await fetch('http://localhost:3042/register', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "email": email,
-        "password": "password"
-    })
-    });
+    const rawResponse = await fetch(
+      `${process.env.REACT_APP_DB_URL}/register`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      }
+    );
     const content = await rawResponse.json();
-  
+
     console.log(content);
-  }
+  };
 
+  useEffect(() => {
+    if (password !== passwordConfirm) {
+      updatePasswordsMatch(false);
+    } else {
+      updatePasswordsMatch(true);
+    }
+  }, [password, passwordConfirm]);
 
+  useEffect(() => {
+    console.log(passwordsMatch);
+  }, [passwordsMatch]);
+
+  useEffect(() => {
+    console.log(passwordsMatch)
+
+    return () => {
+      // Anything in here is fired on component unmount.
+      updateEmail("")
+      updatePassword("")
+      updatePasswordConfirm("")
+      updatePasswordsMatch(false)
+      handleShowPassword(false)
+    };
+  }, []);
 
   return (
     <div
@@ -36,7 +73,10 @@ function RegistrationForm() {
         <h1 className="text-3xl mt-3 font-extrabold">Get Started</h1>
 
         <h6 className=" text-sm text-gray-500">
-          Already have an account? <Link className=" text-MatBlue" to="/login">Login</Link>
+          Already have an account?{" "}
+          <Link className=" text-MatBlue" to="/login">
+            Login
+          </Link>
         </h6>
       </div>
 
@@ -54,33 +94,58 @@ function RegistrationForm() {
         <form className="h-full flex flex-col justify-around w-full">
           <div className="flex flex-col pb-3">
             <label htmlFor="">Name</label>
-            <input  className="custom-input" type="text" />
+            <input className="custom-input" type="text" />
           </div>
           <div className="flex flex-col pb-3">
             <label htmlFor="">Email</label>
-            <input className="custom-input" type="email" value={email} onChange={(event) => updateEmail(event.target.value)} />
+            <input
+              className="custom-input"
+              type="email"
+              value={email}
+              onChange={(event) => updateEmail(event.target.value)}
+            />
           </div>
           <div className="flex flex-col pb-3">
-            <label htmlFor="">Password</label>
-            <input className="custom-input" type="password" value={password} onChange={(event) => updatePassword(event.target.value)} />
+            <label className="flex items-center" htmlFor="">
+              Password
+              <FiEye
+                className="ml-3"
+                onClick={() => handleShowPassword(!showPassword)}
+              />
+            </label>
+            <input
+              className="custom-input"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(event) => updatePassword(event.target.value)}
+            />
           </div>
           <div className="flex flex-col pb-3">
-            <label htmlFor="">Confirm Password</label>
-            <input  className="custom-input" type="password" />
+            <label className="flex items-center" htmlFor="">
+              Confirm Password
+              <FiCircle className="ml-3" fill={passwordsMatch && password.length > 0 ? "#609690" : "#b3243c"} />
+            </label>
+            <input
+              className="custom-input"
+              type={showPassword ? "text" : "password"}
+              value={passwordConfirm}
+              onChange={(event) => updatePasswordConfirm(event.target.value)}
+            />
           </div>
           <div className="flex flex-row-reverse pb-3">
             <label htmlFor="term" className=" text-xs">
               {" "}
               Creating an account means you are okay with our{" "}
-              <a href="/#">Terms of Service</a>, <a href="/#"> Privacy Policy</a>{" "}
-              and out default <a href="/#">Notification Setting</a>
+              <a href="/#">Terms of Service</a>,{" "}
+              <a href="/#"> Privacy Policy</a> and out default{" "}
+              <a href="/#">Notification Setting</a>
             </label>
-            <input  type="checkbox" className="custom-checkbox" />
+            <input type="checkbox" className="custom-checkbox" />
           </div>
 
           <CustomButton
             displayText="Register"
-            function={() => Register()}
+            function={() => register(email, password)}
             color="blue"
           />
         </form>

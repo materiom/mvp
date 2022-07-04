@@ -9,7 +9,7 @@ import recipeImage from "../../pictures/registration.jpg";
 
 function ContributeYourItemCard() {
   return (
-    <div className="flex-col rounded-lg flex-[1_0_18%] min-w-[150px] p-3 justify-end">
+    <div className="flex-col rounded-lg flex-[1_0_18%] min-w-[150px] max-w-xs aspect-square p-3 justify-end">
       <div className="h-6 w-6 ml-auto rounded-full p-1 bg-MatLightGrey relative top-8 right-2 hover:bg-MatTeal hover:text-white transition duration-300">
         <BsPencil className="h-full"/>
       </div>
