@@ -14,13 +14,13 @@ import UserDirectory from "./routes/UserDirectory";
 import DataCommons from "./routes/DataCommons";
 import UserProfile from "./routes/UserProfile";
 import Recipe from "./routes/Recipe";
-import NewRecipe from "./routes/NewRecipe";
-import NewRecipeTerms from "./routes/NewRecipeTerms";
+import NewRecipeSubmission from "./routes/new-recipe/NewRecipeSubmission";
+import NewRecipeTerms from "./routes/new-recipe/NewRecipeTerms";
 import NotFound from "./routes/NotFound";
-import 'react-image-crop/dist/ReactCrop.css';
-import NewRecipeName from "./routes/NewRecipeName";
-import NewRecipeFork from "./routes/NewRecipeFork";
+import NewRecipeName from "./routes/new-recipe/NewRecipeName";
+import NewRecipeFork from "./routes/new-recipe/NewRecipeFork";
 
+import "react-image-crop/dist/ReactCrop.css";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -30,8 +30,8 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-        {/* 404 Page */}
-        <Route path='*' element={<NotFound />} />
+          {/* 404 Page */}
+          <Route path="*" element={<NotFound />} />
           <Route
             path="/"
             element={<Dashboard title="My Dashboard - Materiom" />}
@@ -76,10 +76,6 @@ root.render(
             />
           </Route>
           <Route
-            path="new-recipe"
-            element={<NewRecipe title="New Recipe - Materiom" />}
-          />
-          <Route
             path="new-recipe/terms"
             element={<NewRecipeTerms title="New Recipe - Materiom" />}
           />
@@ -90,6 +86,10 @@ root.render(
           <Route
             path="new-recipe/fork"
             element={<NewRecipeFork title="New Recipe - Materiom" />}
+          />
+          <Route
+            path="new-recipe/submission"
+            element={<NewRecipeSubmission title="New Recipe - Materiom" />}
           />
         </Routes>
       </BrowserRouter>

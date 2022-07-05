@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
-import composition from "../pictures/recipe/composition.svg";
-import properties from "../pictures/recipe/properties.svg";
-import method from "../pictures/recipe/method.svg";
-import gallery from "../pictures/recipe/gallery.svg";
 
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { Link } from "react-router-dom";
-import useUpdateTitle from "../hooks/UpdatePageTitle";
-
-import { useNavigate } from "react-router-dom";
-import ContributeYourItemCard from "../components/contribute/ContributeYourItemCard";
+import useUpdateTitle from "../../hooks/UpdatePageTitle";
+  
+import ContributeYourItemCard from "../../components/contribute/ContributeYourItemCard";
 
 function NewRecipeName(props) {
   // update page title
