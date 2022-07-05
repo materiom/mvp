@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
-import composition from "../pictures/recipe/composition.svg";
-import properties from "../pictures/recipe/properties.svg";
-import method from "../pictures/recipe/method.svg";
-import gallery from "../pictures/recipe/gallery.svg";
-
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import useUpdateTitle from "../hooks/UpdatePageTitle";
-
-import { useNavigate } from "react-router-dom";
+import useUpdateTitle from "../../hooks/UpdatePageTitle";
 
 function NewRecipeName(props) {
   // update page title
@@ -84,9 +76,9 @@ function NewRecipeName(props) {
               </h3>
             </div>
             <div className="flex w-full justify-between items-center my-5">
-              <button className="blue-button mx-3">Submission form</button>
-              <button className="blue-button mx-3">Fork existing recipe</button>
-              <button className="blue-button mx-3">CSV upload</button>
+              <Link className="w-full flex justify-center" to="/new-recipe/submission"><button className="blue-button mx-3">Submission form</button></Link>
+              <Link className="w-full flex justify-center" to=""><button className="blue-button mx-3">Fork existing recipe</button></Link>
+              <Link className="w-full flex justify-center" to=""><button className="blue-button mx-3">CSV upload</button></Link>
             </div>
           </div>
           {/* choose recipe method END*/}

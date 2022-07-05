@@ -16,6 +16,7 @@ import {
 import support from "./../pictures/dashboard/support.svg";
 import contributeHeader from "./../pictures/contribute/contribute-header.png";
 import ContributeYourItemCard from "../components/contribute/ContributeYourItemCard";
+import { Link } from "react-router-dom";
 
 export default function Contribute(props) {
   useUpdateTitle(props.title);
@@ -87,12 +88,14 @@ export default function Contribute(props) {
             </h1>
           </div>
           <div className="flex-[1_0_18%]  mx-2 flex justify-center items-center h-full bg-MatNeutral border-[1px] transition duration-300 border-MatNeutral rounded-lg hover:border-MatTeal">
-            <div className="p-3 m-3 bg-white rounded-full">
-              <BsPlusSquare color="#609690" size={42} />
-            </div>
-            <h1 className=" text-lg font-codecColdBold text-MatTeal w-3/4">
-              Create new recipe
-            </h1>
+            <Link to="/new-recipe/terms" className="flex items-center no-underline">
+              <div className="p-3 m-3 bg-white rounded-full">
+                <BsPlusSquare color="#609690" size={42} />
+              </div>
+              <h1 className=" text-lg font-codecColdBold text-MatTeal w-3/4">
+                Create new recipe
+              </h1>
+            </Link>
           </div>
           <div className="flex-[1_0_18%]  mx-2 flex justify-center items-center h-full bg-MatNeutral border-[1px] transition duration-300 border-MatNeutral rounded-lg hover:border-MatTeal">
             <div className="p-3 m-3 bg-white rounded-full">

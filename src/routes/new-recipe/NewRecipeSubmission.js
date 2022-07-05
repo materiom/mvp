@@ -1,26 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../../components/Header";
+import time from "../../pictures/recipe/time.svg";
+import composition from "../../pictures/recipe/composition.svg";
+import properties from "../../pictures/recipe/properties.svg";
+import method from "../../pictures/recipe/method.svg";
+import gallery from "../../pictures/recipe/gallery.svg";
 
-import logo from "../pictures/logo.png";
-import time from "../pictures/recipe/time.svg";
-import composition from "../pictures/recipe/composition.svg";
-import properties from "../pictures/recipe/properties.svg";
-import method from "../pictures/recipe/method.svg";
-import gallery from "../pictures/recipe/gallery.svg";
+import { ConvertHtmlToString } from "../../hooks/ConvertHtmlToString";
+import ToolsList from "../../components/recipe/ToolsList";
+import ProcessList from "../../components/recipe/ProcessList";
+import IngredientsList from "../../components/recipe/IngredientsList";
+import MethodList from "../../components/recipe/MethodList";
+import Gallery from "../../components/recipe/Gallery";
+import {
+  BsChevronCompactLeft,
+  BsChevronCompactRight,
+  BsFileMinus,
+  BsNodeMinus,
+  BsPatchMinus,
+  BsPencil,
+  BsPlus,
+  BsShieldFillMinus,
+  BsSubtract,
+} from "react-icons/bs";
+import DifficultyIcon from "../../components/recipe/DifficultyIcon";
+import useUpdateTitle from "../../hooks/UpdatePageTitle";
+import ContributePhotoCrop from "../../components/contribute/ContributePhotoCrop";
+import MultiSelect from "../../components/MultiSelect";
+import CustomMultiSelect from "../../components/MultiSelect";
 
-import { ConvertHtmlToString } from "../hooks/ConvertHtmlToString";
-import ToolsList from "../components/recipe/ToolsList";
-import ProcessList from "../components/recipe/ProcessList";
-import IngredientsList from "../components/recipe/IngredientsList";
-import MethodList from "../components/recipe/MethodList";
-import Gallery from "../components/recipe/Gallery";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import DifficultyIcon from "../components/recipe/DifficultyIcon";
-import useUpdateTitle from "../hooks/UpdatePageTitle";
-import ContributePhotoCrop from "../components/contribute/ContributePhotoCrop";
-
-function NewRecipe(props) {
+function NewRecipeSubmission(props) {
   // update page title
   useUpdateTitle(props.title);
 
@@ -28,31 +38,42 @@ function NewRecipe(props) {
   const params = useParams();
 
   const [recipe, updateRecipe] = useState({});
+  const [unsaved, updateUnsaved] = useState(false);
+  const [formComplete, updateFormComplete] = useState(false);
+
+  const dummyDate = (new Date()).toDateString() 
+  
+  const updateRecipeObject = (event) => {
+    updateRecipe({ ...recipe, [event.target.name]: event.target.value });
+  };
+
+  const updateDifficulty = () => {
+    const newDifficulty = recipe.difficulty < 5 ? recipe.difficulty + 1 : 1;
+    updateRecipe({ ...recipe, difficulty: newDifficulty });
+  };
 
   // dummy fetch recipe data
   const getRecipe = () => {
-    // const recipe = recipeData.filter((recipe) => recipe.id === params.recipeId);
-    // updateRecipe(recipe[0]);
-    // console.log(recipe[0]);
     fetch(`https://materiom.org/api/recipe/${params.recipeId}`)
       .then(function (response) {
         // The response is a Response instance.
-        // You parse the data into a useable format using `.json()`
+        // Parse the data into a useable format using `.json()`
         return response.json();
       })
       .then(function (data) {
         // `data` is the parsed version of the JSON returned from the above endpoint.
-        console.log(data); // { "userId": 1, "id": 1, "title": "...", "body": "..." }
         updateRecipe(data);
       });
-    // .then(data => updateRecipe(data))
-    // .finally(console.log(recipe))
   };
 
   // update state upon first render
   useEffect(() => {
     getRecipe();
   }, []);
+
+  useEffect(() => {
+    console.log(recipe);
+  }, [recipe]);
 
   return (
     <div className=" w-full min-h-screen flex flex-col bg-MatLightGrey max-h-screen overflow-x-scroll custom-scrollbar">
@@ -68,27 +89,34 @@ function NewRecipe(props) {
                   Ref:{" "}
                   {recipe.ref_code
                     ? ConvertHtmlToString(recipe.ref_code)
-                    : "N/A"}{" "}
+                    : "AGeCh5"}{" "}
                   |{" "}
                   {recipe.created_at
                     ? // the line below splits the date at the ' ' and returns
                       // the first part to remove the time and return the date only
                       recipe.created_at.split(" ")[0]
-                    : "N/A"}{" "}
+                    : dummyDate}{" "}
                   | V1
                 </h5>
                 <h4 className="capitalize font-codecColdExtraBold text-MatTeal">
                   {recipe.name}
                 </h4>
               </div>
-
-              <div className="flex rounded-lg items-center bg-MatLightGrey text-MatDarkGrey px-5 w-">
-                <div className="flex w-1/5">
-                  <h5 className="text-xl">+</h5>
-                </div>
-                <div className="border-l-2 border-white h-full flex items-center justify-center text-sm w-40">
-                  <h4>Add to favorites</h4>
-                </div>
+              <div className="flex w-1/4">
+                <button
+                  disabled={!unsaved}
+                  className="blue-squircle-button mx-3"
+                >
+                  {" "}
+                  Save Progress
+                </button>
+                <button
+                  disabled={!formComplete}
+                  className="blue-squircle-button"
+                >
+                  {" "}
+                  Submit
+                </button>
               </div>
             </div>
             <div className="flex w-full min-w-full h-72">
@@ -103,22 +131,31 @@ function NewRecipe(props) {
                 )} 
                 */}
                 <div className="flex w-1/2 min-w-[50%]">
-                  <img
-                    className="w-full object-center object-cover min-w-full"
-                    src={""}
-                  />
+                  <div className="w-full overflow-hidden relative">
+                    <div className="flex bg-MatLightGrey2 p-3 absolute right-0 rounded-bl-lg filter hover:brightness-90">
+                      <BsPencil />
+                    </div>
+                    <img
+                      className="w-full object-center object-cover min-w-full"
+                      src={composition}
+                    />
+                  </div>
                 </div>
-                <div className="flex flex-col justify-around w-1/2 bg-MatLightGrey p-5">
+                <div className="flex flex-col justify-around w-1/2 bg-MatLightGrey p-5 relative">
+                  <div className="flex bg-MatLightGrey2 p-3 absolute right-0 top-0 rounded-bl-lg filter hover:brightness-90">
+                    <BsPencil />
+                  </div>
                   <div className="flex">
                     <div className="flex flex-col">
                       <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                         Created by:
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.author
-                          ? ConvertHtmlToString(recipe.author)
-                          : "N/A"}
-                      </h6>
+                      <input
+                        name="author"
+                        onChange={(event) => updateRecipeObject(event)}
+                        value={recipe.author && recipe.author}
+                        className="text-MatDarkGrey text-xs bg-MatLightGrey"
+                      />
                     </div>
                   </div>
                   <div className="flex w-full justify-between">
@@ -126,19 +163,23 @@ function NewRecipe(props) {
                       <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                         Contributors
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.contributors ? recipe.contributors : "N/A"}
-                      </h6>
+                      <input
+                        name="contributors"
+                        onChange={(event) => updateRecipeObject(event)}
+                        value={recipe.contributors && recipe.contributors}
+                        className="text-MatDarkGrey text-xs bg-MatLightGrey"
+                      />
                     </div>
                     <div className="flex flex-col w-1/2">
                       <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                         Source
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.source
-                          ? ConvertHtmlToString(recipe.source)
-                          : "N/A"}
-                      </h6>
+                      <input
+                        name="source"
+                        onChange={(event) => updateRecipeObject(event)}
+                        value={recipe.source && recipe.source}
+                        className="text-MatDarkGrey text-xs bg-MatLightGrey"
+                      />
                     </div>
                   </div>
                   <div className="flex w-full justify-between">
@@ -146,69 +187,85 @@ function NewRecipe(props) {
                       <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                         License
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.license
-                          ? ConvertHtmlToString(recipe.license)
-                          : "N/A"}
-                      </h6>
+                      <input
+                        name="license"
+                        onChange={(event) => updateRecipeObject(event)}
+                        value={recipe.license && recipe.license}
+                        className="text-MatDarkGrey text-xs bg-MatLightGrey"
+                      />
                     </div>
                     <div className="flex flex-col w-1/2">
                       <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                         Difficulty
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
-                        {recipe.difficulty ? (
+                      <h6 className="text-MatDarkGrey text-xs flex items-center justify-start w-min">
+                        {false ? (
                           <DifficultyIcon difficulty={recipe.difficulty} />
                         ) : (
-                          "N/A"
+                          <DifficultyIcon difficulty={recipe.difficulty} />
                         )}
+                        <BsPlus
+                          onClick={() => updateDifficulty()}
+                          className="text-2xl rounded-full hover:scale-125 hover:bg-MatLightGrey2 transition duration-300"
+                        />
                       </h6>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex pt-5">
+            <div className="flex relative">
               <div className="flex flex-col w-full">
-                <div className="flex flex-col">
+                <div className="flex flex-col mt-5 min-h-[75px]">
                   <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                     Description
                   </h5>
-                  <h6 className="text-MatDarkGrey text-xs">
-                    {recipe.description ? recipe.description : "N/A"}
-                  </h6>
+                  <input
+                    name="description"
+                    onChange={(event) => updateRecipeObject(event)}
+                    value={recipe.description && recipe.description}
+                    className="text-MatDarkGrey text-xs"
+                  />
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col  min-h-[75px]">
                   <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                     Preparation time
                   </h5>
                   <h6 className="text-MatDarkGrey text-xs flex items-center">
                     <img src={time} alt="time icon" className="mr-1" />
-                    {recipe.prep_time ? recipe.prep_time : "N/A"}
+                    <input
+                      name="time"
+                      onChange={(event) => updateRecipeObject(event)}
+                      value={recipe.time && recipe.time}
+                      className="text-MatDarkGrey text-xs "
+                    />
                   </h6>
                 </div>
               </div>
-              <div className="flex flex-col w-full">
-                <div className="flex flex-col">
+              <div className="flex flex-col w-full mt-5">
+                <div className="flex flex-col  min-h-[75px]">
                   <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                     Tools
                   </h5>
-                  {recipe.tools ? <ToolsList tools={recipe.tools} /> : "N/A"}
+                  <CustomMultiSelect />
+                  {/* <input
+                    name="tools"
+                    onChange={(event) => updateRecipeObject(event)}
+                    value={recipe.tools && recipe.tools}
+                    className="text-MatDarkGrey text-xs "
+                  /> */}
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col min-h-[75px]">
                   <h5 className="text-MatDarkGrey font-codecColdBold text-base">
                     Process
                   </h5>
-                  <h6 className="text-MatDarkGrey text-xs">
-                    {recipe.tools ? (
-                      <ProcessList processes={recipe.processes} />
-                    ) : (
-                      "N/A"
-                    )}
-                  </h6>
+                  <CustomMultiSelect />
                 </div>
+              </div>
+              <div className="flex bg-MatLightGrey2 p-3 absolute right-0 rounded-bl-lg filter hover:brightness-90">
+                <BsPencil />
               </div>
             </div>
           </div>
@@ -304,4 +361,4 @@ function NewRecipe(props) {
   );
 }
 
-export default NewRecipe;
+export default NewRecipeSubmission;

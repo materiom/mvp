@@ -14,6 +14,7 @@ module.exports = {
         MatDark: "#646464",
         MatGrey: "#666666",
         MatLightGrey: "#E9E9E9",
+        MatLightGrey2: "#D2D2D2",
         MatDarkGrey: "#545252",
         MatNeutral: "#F5F5F5",
         MatTeal: "#609690",

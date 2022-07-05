@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
-import composition from "../pictures/recipe/composition.svg";
-import properties from "../pictures/recipe/properties.svg";
-import method from "../pictures/recipe/method.svg";
-import gallery from "../pictures/recipe/gallery.svg";
-
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import method from "../../pictures/recipe/method.svg";
 import { Link } from "react-router-dom";
-import useUpdateTitle from "../hooks/UpdatePageTitle";
+import useUpdateTitle from "../../hooks/UpdatePageTitle";
 
-import { useNavigate } from "react-router-dom";
 
 function NewRecipeTerms(props) {
   // update page title
   useUpdateTitle(props.title);
-
 
   // function useGoToNewRecipe() {
   //   let navigate = useNavigate();
@@ -40,13 +33,21 @@ function NewRecipeTerms(props) {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
-              <button
-                className="blue-button"
-                disabled={!terms}
-                onClick={''}
-              >
-                Make new recipe
-              </button>
+              {terms ? (
+                <Link to="/new-recipe/name" className="flex w-4/5">
+                  <button
+                    className="blue-button w-full ml-auto "
+                    disabled={!terms}
+                    onClick={""}
+                  >
+                    Make new recipe
+                  </button>
+                </Link>
+              ) : (
+                <button className="blue-button ml-20" disabled={!terms} onClick={""}>
+                  Make new recipe
+                </button>
+              )}
             </div>
           </div>
         </div>

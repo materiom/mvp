@@ -72,11 +72,11 @@ a {
 }
 
 .blue-button {
-  @apply mx-auto flex  text-xs p-2 no-underline rounded-full w-[80%]
+  @apply flex  text-xs p-2 no-underline rounded-full w-[80%]
    max-w-lg justify-around items-center transition duration-300
   text-white bg-MatBlue  filter
   hover:brightness-90
-  disabled:filter-none disabled:pointer-events-none disabled:bg-MatLightTeal disabled:text-white;
+  disabled:filter-none disabled:pointer-events-none disabled:bg-MatLightTeal;
 }
 
 .grey-button {
@@ -88,7 +88,10 @@ a {
 }
 
 .blue-squircle-button {
-  @apply mx-auto flex text-white text-xs p-2 no-underline bg-MatBlue hover:bg-white hover:text-MatBlue border-[1px] border-MatBlue disabled:bg-slate-400 rounded-lg w-full max-w-lg justify-around items-center;
+  @apply mx-auto flex  text-xs p-2 no-underline   rounded-lg w-full max-w-lg justify-around items-center
+ text-white bg-MatBlue enabled:filter
+ disabled:filter-none disabled:pointer-events-none disabled:bg-MatLightTeal
+  hover:brightness-90;
 }
 
 .white-button {
