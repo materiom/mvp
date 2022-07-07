@@ -1,11 +1,17 @@
+// Dependencies
 import React from "react";
 import RegistrationForm from "../components/RegistrationForm";
+
+// Pictures
 import picture from "./../pictures/login/background.webp";
 import pattern from "./../pictures/login/pattern.svg";
 import logo from "./../pictures/full-logo.svg";
+
+// Hooks
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
-function Register(props) {
+export default function Register(props) {
+  // update page title
   useUpdateTitle(props.title);
 
   return (
@@ -33,5 +39,3 @@ function Register(props) {
     </div>
   );
 }
-
-export default Register;

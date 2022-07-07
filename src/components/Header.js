@@ -1,19 +1,22 @@
+// Dependencies
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Pictures
 import logo from "./../pictures/full-logo.svg";
 import profile from "./../pictures/profile.jpg";
 
-function Header(props) {
+export default function Header(props) {
   return (
     <div className="w-screen min-h-[128px] min-w-[100vw] h-[15vh] flex px-36 justify-between items-center  bg-MatGrey">
       <img
         src={logo}
         alt=""
-        href="materiom.org" 
+        href="materiom.org"
         className="mr-auto my-auto h-12 "
       />
       <div className="flex items-center justify-between h-full w-4/6 mx-36">
+        {/* the props.activePage variable denotes which tab is highlighted */}
         <div
           className={
             `h-full w-1/4 flex ` +
@@ -30,7 +33,10 @@ function Header(props) {
             (props.activePage === "analyse" && "bg-MatDarkGrey")
           }
         >
-          <Link className="text-md m-auto text-white no-underline" to="/analyse">
+          <Link
+            className="text-md m-auto text-white no-underline"
+            to="/analyse"
+          >
             Data commons
           </Link>
         </div>
@@ -53,7 +59,10 @@ function Header(props) {
             (props.activePage === "connect" && "bg-MatDarkGrey")
           }
         >
-          <Link className="text-md m-auto text-white no-underline" to="/connect">
+          <Link
+            className="text-md m-auto text-white no-underline"
+            to="/connect"
+          >
             User directory
           </Link>
         </div>
@@ -74,5 +83,3 @@ function Header(props) {
     </div>
   );
 }
-
-export default Header;

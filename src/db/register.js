@@ -1,6 +1,4 @@
-console.log(process.env.REACT_APP_DB_URL)
-
-
+// Function to register the user
 const register = async (email, password) => {
   const rawResponse = await fetch(`${process.env.REACT_APP_DB_URL}/register`, {
     method: "POST",

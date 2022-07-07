@@ -1,11 +1,7 @@
 // Import dependencies
 import React from "react";
-import useUpdateTitle from "../hooks/UpdatePageTitle";
-
-// Custom components
-import Header from "../components/Header";
+import { Link } from "react-router-dom";
 import {
-  BsArrowRight,
   BsChevronCompactLeft,
   BsChevronCompactRight,
   BsFileEarmarkSpreadsheet,
@@ -13,12 +9,19 @@ import {
   BsPlusSquare,
 } from "react-icons/bs";
 
-import support from "./../pictures/dashboard/support.svg";
-import contributeHeader from "./../pictures/contribute/contribute-header.png";
+// Hooks
+import useUpdateTitle from "../hooks/UpdatePageTitle";
+
+// Custom components
+import Header from "../components/Header";
 import ContributeYourItemCard from "../components/contribute/ContributeYourItemCard";
-import { Link } from "react-router-dom";
+
+// Pictures
+import contributeHeader from "./../pictures/contribute/contribute-header.png";
+import support from "./../pictures/dashboard/support.svg";
 
 export default function Contribute(props) {
+  // update page title
   useUpdateTitle(props.title);
 
   return (
@@ -88,7 +91,10 @@ export default function Contribute(props) {
             </h1>
           </div>
           <div className="flex-[1_0_18%]  mx-2 flex justify-center items-center h-full bg-MatNeutral border-[1px] transition duration-300 border-MatNeutral rounded-lg hover:border-MatTeal">
-            <Link to="/new-recipe/terms" className="flex items-center no-underline">
+            <Link
+              to="/new-recipe/terms"
+              className="flex items-center no-underline"
+            >
               <div className="p-3 m-3 bg-white rounded-full">
                 <BsPlusSquare color="#609690" size={42} />
               </div>

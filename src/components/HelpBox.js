@@ -1,5 +1,7 @@
-// Import dependencies
+// Dependencies
 import React from "react";
+
+// Pictures
 import support from "./../pictures/dashboard/support.svg";
 import twitter from "./../pictures/dashboard/twitter.svg";
 
@@ -15,7 +17,11 @@ export default function HelpBox() {
           <div className="flex flex-wrap">
             <div className="flex flex-1 justify-start items-center mr-3 mt-3">
               <div className=" bg-white rounded-full p-3  hover:shadow-xl duration-300">
-                <img className="min-w-[20px] xl:h-5 h-4" src={support} alt="Contact support" />
+                <img
+                  className="min-w-[20px] xl:h-5 h-4"
+                  src={support}
+                  alt="Contact support"
+                />
               </div>
               <div className="flex flex-col text-sm">
                 <h4 className="pl-4">Contact</h4>
@@ -24,7 +30,11 @@ export default function HelpBox() {
             </div>
             <div className="flex flex-1 justify-start items-center mt-3">
               <div className=" bg-white rounded-full p-3 hover:shadow-xl duration-300">
-                <img className="min-w-[20px] xl:h-5 h-4" src={twitter} alt="Tweet us" />
+                <img
+                  className="min-w-[20px] xl:h-5 h-4"
+                  src={twitter}
+                  alt="Tweet us"
+                />
               </div>
               <div className="flex flex-col">
                 <h4 className="pl-4">Tweet</h4>

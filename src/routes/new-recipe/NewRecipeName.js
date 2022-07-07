@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from "react";
+// Dependencies
+import React from "react";
+import { Link } from "react-router-dom";
+
+// Components
 import Header from "../../components/Header";
 
-import { Link } from "react-router-dom";
+// Hooks
 import useUpdateTitle from "../../hooks/UpdatePageTitle";
 
-function NewRecipeName(props) {
+export default function NewRecipeName(props) {
   // update page title
   useUpdateTitle(props.title);
 
-  // function useGoToNewRecipe() {
-  //   let navigate = useNavigate();
-
-  //   navigate("/new-recipe", { replace: true });
-  // }
-
-  const [terms, updateTerms] = useState(false);
   return (
     <div className=" w-full min-h-screen flex flex-col bg-MatLightGrey max-h-screen overflow-x-scroll custom-scrollbar">
-      <Header activePage="connect" />
+      {/* Pass through a string to tell the header which tab to highlight */}
+      <Header activePage="contribute" />
 
       <div className="h-[85vh] flex justify-between flex-wrap w-full px-36 py-10 bg-MatLightGrey custom-scrollbar">
         {/* Recipe warning START */}
@@ -62,7 +60,7 @@ function NewRecipeName(props) {
                 Recipe code
               </h3>
             </div>
-            <h4 className="my-5 text-lg italic" >AGeCh5</h4>
+            <h4 className="my-5 text-lg italic">AGeCh5</h4>
           </div>
         </div>
         {/* recipe code END*/}
@@ -76,9 +74,23 @@ function NewRecipeName(props) {
               </h3>
             </div>
             <div className="flex w-full justify-between items-center my-5">
-              <Link className="w-full flex justify-center" to="/new-recipe/submission"><button className="blue-button mx-3">Submission form</button></Link>
-              <Link className="w-full flex justify-center" to=""><button className="blue-button mx-3">Fork existing recipe</button></Link>
-              <Link className="w-full flex justify-center" to=""><button className="blue-button mx-3">CSV upload</button></Link>
+              <Link
+                className="w-full flex justify-center"
+                to="/new-recipe/submission"
+              >
+                <button className="blue-button mx-3">Submission form</button>
+              </Link>
+              <Link
+                className="w-full flex justify-center"
+                to="/new-recipe/fork"
+              >
+                <button className="blue-button mx-3">
+                  Fork existing recipe
+                </button>
+              </Link>
+              <Link className="w-full flex justify-center" to="">
+                <button className="blue-button mx-3">CSV upload</button>
+              </Link>
             </div>
           </div>
           {/* choose recipe method END*/}
@@ -87,5 +99,3 @@ function NewRecipeName(props) {
     </div>
   );
 }
-
-export default NewRecipeName;

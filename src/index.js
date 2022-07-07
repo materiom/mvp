@@ -1,96 +1,142 @@
+// Dependencies
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+
+// Routes
+import {
+  Login,
+  Register,
+  Dashboard,
+  EditProfile,
+  Contribute,
+  UserDirectory,
+  DataCommons,
+  UserProfile,
+  Recipe,
+  NewRecipeSubmission,
+  NewRecipeTerms,
+  NotFound,
+  NewRecipeName,
+  NewRecipeFork,
+  Ingredient
+} from "./routes";
+
+// Components
+import PrivateRoute from "./components/PrivateRoute";
+
+// CSS
 import "./index.css";
-import Login from "./routes/Login";
-import Register from "./routes/Register";
-import Dashboard from "./routes/Dashboard";
-import EditProfile from "./routes/EditProfile";
-import Contribute from "./routes/Contribute";
-import UserDirectory from "./routes/UserDirectory";
-import DataCommons from "./routes/DataCommons";
-import UserProfile from "./routes/UserProfile";
-import Recipe from "./routes/Recipe";
-import NewRecipeSubmission from "./routes/new-recipe/NewRecipeSubmission";
-import NewRecipeTerms from "./routes/new-recipe/NewRecipeTerms";
-import NotFound from "./routes/NotFound";
-import NewRecipeName from "./routes/new-recipe/NewRecipeName";
-import NewRecipeFork from "./routes/new-recipe/NewRecipeFork";
 
-import "react-image-crop/dist/ReactCrop.css";
-
+// React boilerplate
 const container = document.getElementById("root");
 const root = createRoot(container);
 
+// Start of the app
 root.render(
   <React.StrictMode>
+    {/* Redux store for state management */}
     <Provider store={store}>
+      {/* Browser router from react router */}
       <BrowserRouter>
+        {/* All routes */}
         <Routes>
           {/* 404 Page */}
           <Route path="*" element={<NotFound />} />
-          <Route
-            path="/"
-            element={<Dashboard title="My Dashboard - Materiom" />}
-          ></Route>
+
+          {/* Login */}
           <Route path="login" element={<Login title="Login - Materiom" />} />
+
+          {/* Register */}
           <Route
             path="register"
             element={<Register title="Register - Materiom" />}
           />
+
+          {/* Dashboard */}
+          <Route>
+            {/* Example of a private route */}
+            <Route exact path="/" element={<PrivateRoute />}>
+              {/* If user logged in the below component is returned else returns Login */}
+              <Route exact path="/" element={<Dashboard />} />
+            </Route>
+          </Route>
+
+          {/* Contribution portal */}
           <Route
             path="contribute"
             element={<Contribute title="My Contributions - Materiom" />}
           />
-          <Route
-            path="edit-profile"
-            element={<EditProfile title="Edit Profile - Materiom" />}
-          />
+
+          {/* User directory */}
           <Route
             path="connect"
             element={<UserDirectory title="User Directory - Materiom" />}
           />
+
+          {/* Data commons */}
           <Route
             path="analyse"
             element={<DataCommons title="User Directory - Materiom" />}
           />
-          <Route path="user-profile">
+
+          {/* Nested route for user profile */}
+          <Route path="user">
+            {/* User profile */}
             <Route
-              path=":userId"
+              path="profile/:userId"
               element={<UserProfile title="Profile - Materiom" />}
             />
+
+            {/* Edit user profile */}
+            <Route
+              path="edit/:userId"
+              element={<EditProfile title="Edit Profile - Materiom" />}
+            />
           </Route>
+
+          {/* View recipe page */}
           <Route path="recipe">
             <Route
               path=":recipeId"
               element={<Recipe title="Recipe - Materiom" />}
             />
           </Route>
+
+          {/* Ingredients route NEEDS WORK */}
           <Route path="ingredient">
             <Route
               path=":ingredientId"
-              element={<Recipe title="Recipe - Materiom" />}
+              element={<Ingredient title="Ingredient - Materiom" />}
             />
           </Route>
-          <Route
-            path="new-recipe/terms"
-            element={<NewRecipeTerms title="New Recipe - Materiom" />}
-          />
-          <Route
-            path="new-recipe/name"
-            element={<NewRecipeName title="New Recipe - Materiom" />}
-          />
-          <Route
-            path="new-recipe/fork"
-            element={<NewRecipeFork title="New Recipe - Materiom" />}
-          />
-          <Route
-            path="new-recipe/submission"
-            element={<NewRecipeSubmission title="New Recipe - Materiom" />}
-          />
+
+          {/* Nested route for new recipe */}
+          <Route path="new-recipe">
+            {/* terms and conditions */}
+            <Route
+              path="terms"
+              element={<NewRecipeTerms title="New Recipe - Materiom" />}
+            />
+            {/* new recipe name */}
+            <Route
+              path="name"
+              element={<NewRecipeName title="New Recipe - Materiom" />}
+            />
+            {/* fork an existing recipe */}
+            <Route
+              path="fork"
+              element={<NewRecipeFork title="New Recipe - Materiom" />}
+            />
+            {/* new submission */}
+            <Route
+              path="submission"
+              element={<NewRecipeSubmission title="New Recipe - Materiom" />}
+            />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Provider>

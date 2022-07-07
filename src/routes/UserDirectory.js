@@ -1,15 +1,17 @@
-// Import dependencies
+// Dependencies
 import React from "react";
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
-// Custom components
+// Components
 import UserFilterMenu from "../components/userDirectory/UserFilterMenu";
 import UserTable from "../components/userDirectory/UserTable";
 import Header from "../components/Header";
 
+// Dummy data
 import {userData} from "./../testUsers"
 
 export default function UserDirectory(props) {
+  // update page title
   useUpdateTitle(props.title);
 
   return (
