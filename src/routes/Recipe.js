@@ -1,34 +1,40 @@
+// Dependencies
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
-import logo from "../pictures/logo.png";
+// Pictures
 import time from "../pictures/recipe/time.svg";
 import composition from "../pictures/recipe/composition.svg";
 import properties from "../pictures/recipe/properties.svg";
 import method from "../pictures/recipe/method.svg";
 import gallery from "../pictures/recipe/gallery.svg";
 
-import { ConvertHtmlToString } from "../hooks/ConvertHtmlToString";
+// Components
 import ToolsList from "../components/recipe/ToolsList";
 import ProcessList from "../components/recipe/ProcessList";
 import IngredientsList from "../components/recipe/IngredientsList";
 import MethodList from "../components/recipe/MethodList";
 import Gallery from "../components/recipe/Gallery";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import DifficultyIcon from "../components/recipe/DifficultyIcon";
 
-function Recipe() {
+// Hooks
+import { ConvertHtmlToString } from "../hooks/ConvertHtmlToString";
+import useUpdateTitle from "../hooks/UpdatePageTitle";
+
+export default function Recipe(props) {
+  // update page title
+  useUpdateTitle(props.title);
+
   // get parameters from the router url
   const params = useParams();
 
+  // set initial state
   const [recipe, updateRecipe] = useState({});
 
   // dummy fetch recipe data
   const getRecipe = () => {
-    // const recipe = recipeData.filter((recipe) => recipe.id === params.recipeId);
-    // updateRecipe(recipe[0]);
-    // console.log(recipe[0]);
     fetch(`https://materiom.org/api/recipe/${params.recipeId}`)
       .then(function (response) {
         // The response is a Response instance.
@@ -37,16 +43,18 @@ function Recipe() {
       })
       .then(function (data) {
         // `data` is the parsed version of the JSON returned from the above endpoint.
-        console.log(data); // { "userId": 1, "id": 1, "title": "...", "body": "..." }
+        console.log(data);
         updateRecipe(data);
       });
-    // .then(data => updateRecipe(data))
-    // .finally(console.log(recipe))
   };
 
-  // update state upon first render
+  // update state upon initial render
   useEffect(() => {
     getRecipe();
+    // if you return a function from useEffect is will fire
+    // when the component is removed from the DOM to help
+    // keep state clean
+    return () => updateRecipe({});
   }, []);
 
   return (
@@ -54,7 +62,7 @@ function Recipe() {
       <Header activePage="connect" />
 
       <div className="h-full flex justify-between flex-wrap w-full px-36 py-10 bg-MatLightGrey custom-scrollbar">
-        {/* users's recipes and contributions */}
+        {/* Recipe details START */}
         <div className="flex flex-col w-full h-1/2">
           <div className="w-full h-full justify-around rounded-lg bg-white pl-5 pt-5 pb-5">
             <div className="flex justify-between pr-5 pb-5">
@@ -88,7 +96,12 @@ function Recipe() {
             </div>
             <div className="flex w-full h-72">
               <div className="flex w-full">
-                <div className={"flex w-1/2 min-w-[50%] " + (!recipe.thumbnail_src &&  "bg-MatDarkGrey")}>
+                <div
+                  className={
+                    "flex w-1/2 min-w-[50%] " +
+                    (!recipe.thumbnail_src && "bg-MatDarkGrey")
+                  }
+                >
                   {recipe.thumbnail_src && (
                     <img
                       className="w-full object-center object-cover min-w-full"
@@ -201,9 +214,9 @@ function Recipe() {
             </div>
           </div>
         </div>
-        {/* user's recipes and contributions END*/}
+        {/* Recipe details END*/}
 
-        {/* recipe ingredients START */}
+        {/* Recipe ingredients START */}
         <div className="flex w-full h-1/2 pt-5">
           <div className="w-full flex justify-start items-start rounded-lg bg-MatLightGrey">
             <div className="flex flex-col items-start w-1/2 pt-5 px-5 h-full bg-white rounded-lg">
@@ -234,9 +247,9 @@ function Recipe() {
             </div>
           </div>
         </div>
-        {/* recipe ingredients END*/}
+        {/* Recipe ingredients END*/}
 
-        {/* recipe's method START*/}
+        {/* Recipe's method START*/}
         <div className="flex flex-col w-full h-1/2">
           <div className="w-full h-full justify-around rounded-lg bg-white mt-5 pb-5">
             <div className="flex items-start w-full pt-5 px-5 h-full bg-white rounded-lg">
@@ -259,8 +272,9 @@ function Recipe() {
             </div>
           </div>
         </div>
-        {/* recipe's method END*/}
-        {/* recipe's method START*/}
+        {/* Recipe's method END*/}
+
+        {/* Recipe's gallery START*/}
         <div className="flex flex-col w-full h-1/2">
           <div className="w-full h-full justify-around rounded-lg bg-white mt-5 pb-5">
             <div className="flex items-start w-full pt-5 px-5 h-full bg-white rounded-lg">
@@ -286,10 +300,8 @@ function Recipe() {
             </div>
           </div>
         </div>
-        {/* recipe's method END*/}
+        {/* Recipe's gallery END*/}
       </div>
     </div>
   );
 }
-
-export default Recipe;

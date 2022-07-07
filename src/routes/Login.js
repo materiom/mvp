@@ -1,11 +1,19 @@
-import React, { useEffect } from "react";
+// Dependencies
+import React from "react";
+
+// Components
 import LoginForm from "../components/LoginForm";
+
+// Pictures
 import picture from "./../pictures/login/background.webp";
 import pattern from "./../pictures/login/pattern.svg";
 import logo from "./../pictures/full-logo.svg";
+
+// Hooks
 import useUpdateTitle from "./../hooks/UpdatePageTitle";
 
-function Login(props) {
+export default function Login(props) {
+  // update page title
   useUpdateTitle(props.title);
 
   return (
@@ -33,5 +41,3 @@ function Login(props) {
     </div>
   );
 }
-
-export default Login;

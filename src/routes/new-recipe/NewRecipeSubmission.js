@@ -1,52 +1,53 @@
+// Dependencies
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../../components/Header";
+import {
+  BsChevronCompactLeft,
+  BsChevronCompactRight,
+  BsPencil,
+  BsPlus,
+} from "react-icons/bs";
+
+// Pictures
 import time from "../../pictures/recipe/time.svg";
 import composition from "../../pictures/recipe/composition.svg";
 import properties from "../../pictures/recipe/properties.svg";
 import method from "../../pictures/recipe/method.svg";
 import gallery from "../../pictures/recipe/gallery.svg";
 
-import { ConvertHtmlToString } from "../../hooks/ConvertHtmlToString";
-import ToolsList from "../../components/recipe/ToolsList";
-import ProcessList from "../../components/recipe/ProcessList";
+// Components
 import IngredientsList from "../../components/recipe/IngredientsList";
 import MethodList from "../../components/recipe/MethodList";
 import Gallery from "../../components/recipe/Gallery";
-import {
-  BsChevronCompactLeft,
-  BsChevronCompactRight,
-  BsFileMinus,
-  BsNodeMinus,
-  BsPatchMinus,
-  BsPencil,
-  BsPlus,
-  BsShieldFillMinus,
-  BsSubtract,
-} from "react-icons/bs";
-import DifficultyIcon from "../../components/recipe/DifficultyIcon";
-import useUpdateTitle from "../../hooks/UpdatePageTitle";
-import ContributePhotoCrop from "../../components/contribute/ContributePhotoCrop";
-import MultiSelect from "../../components/MultiSelect";
 import CustomMultiSelect from "../../components/MultiSelect";
+import DifficultyIcon from "../../components/recipe/DifficultyIcon";
+import Header from "../../components/Header";
 
-function NewRecipeSubmission(props) {
+// Hooks
+import { ConvertHtmlToString } from "../../hooks/ConvertHtmlToString";
+import useUpdateTitle from "../../hooks/UpdatePageTitle";
+
+export default function NewRecipeSubmission(props) {
   // update page title
   useUpdateTitle(props.title);
 
   // get parameters from the router url
   const params = useParams();
 
+  // set initial state
   const [recipe, updateRecipe] = useState({});
   const [unsaved, updateUnsaved] = useState(false);
   const [formComplete, updateFormComplete] = useState(false);
+  const dummyDate = new Date().toDateString();
 
-  const dummyDate = (new Date()).toDateString() 
-  
+  // function to update recipe oject without overwriting
+  // the info already there
   const updateRecipeObject = (event) => {
     updateRecipe({ ...recipe, [event.target.name]: event.target.value });
+    updateUnsaved(true)
   };
 
+  // function to update difficulty
   const updateDifficulty = () => {
     const newDifficulty = recipe.difficulty < 5 ? recipe.difficulty + 1 : 1;
     updateRecipe({ ...recipe, difficulty: newDifficulty });
@@ -71,13 +72,9 @@ function NewRecipeSubmission(props) {
     getRecipe();
   }, []);
 
-  useEffect(() => {
-    console.log(recipe);
-  }, [recipe]);
-
   return (
     <div className=" w-full min-h-screen flex flex-col bg-MatLightGrey max-h-screen overflow-x-scroll custom-scrollbar">
-      <Header activePage="connect" />
+      <Header activePage="contribute" />
 
       <div className="h-full flex justify-between flex-wrap w-full px-36 py-10 bg-MatLightGrey custom-scrollbar">
         {/* recipes details START */}
@@ -103,9 +100,11 @@ function NewRecipeSubmission(props) {
                 </h4>
               </div>
               <div className="flex w-1/4">
+                {/* dummy save function below */}
                 <button
                   disabled={!unsaved}
                   className="blue-squircle-button mx-3"
+                  onClick={() => updateUnsaved(false)}
                 >
                   {" "}
                   Save Progress
@@ -121,15 +120,6 @@ function NewRecipeSubmission(props) {
             </div>
             <div className="flex w-full min-w-full h-72">
               <div className="flex w-full">
-                {/*
-                 {true ? (
-                  <div className=" z-10 absolute top-0 left-0 bg-MatLightGrey h-screen w-screen ">
-                     <ContributePhotoCrop  className="m-auto"/> 
-                  </div>
-                ) : (
-                  ""
-                )} 
-                */}
                 <div className="flex w-1/2 min-w-[50%]">
                   <div className="w-full overflow-hidden relative">
                     <div className="flex bg-MatLightGrey2 p-3 absolute right-0 rounded-bl-lg filter hover:brightness-90">
@@ -249,12 +239,6 @@ function NewRecipeSubmission(props) {
                     Tools
                   </h5>
                   <CustomMultiSelect />
-                  {/* <input
-                    name="tools"
-                    onChange={(event) => updateRecipeObject(event)}
-                    value={recipe.tools && recipe.tools}
-                    className="text-MatDarkGrey text-xs "
-                  /> */}
                 </div>
 
                 <div className="flex flex-col min-h-[75px]">
@@ -329,7 +313,7 @@ function NewRecipeSubmission(props) {
           </div>
         </div>
         {/* recipe's method END*/}
-        {/* recipe's method START*/}
+        {/* recipe's gallery START*/}
         <div className="flex flex-col w-full h-1/2">
           <div className="w-full h-full justify-around rounded-lg bg-white mt-5 pb-5">
             <div className="flex items-start w-full pt-5 px-5 h-full bg-white rounded-lg">
@@ -342,23 +326,19 @@ function NewRecipeSubmission(props) {
                 </div>
                 <div className="flex w-full">
                   <BsChevronCompactLeft className="my-auto text-4xl text-MatLightGrey" />
-
                   {recipe.ingredients ? (
                     <Gallery gallery={recipe.gallery} />
                   ) : (
                     "N/A"
                   )}
-
                   <BsChevronCompactRight className="my-auto text-4xl text-MatLightGrey" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* recipe's method END*/}
+        {/* recipe's gallery END*/}
       </div>
     </div>
   );
 }
-
-export default NewRecipeSubmission;

@@ -1,11 +1,3 @@
-:root {
-  --MatLight: #b4d4d4;
-  --MatBlue: #649494;
-  --MatOrange: #d46c64;
-  --MatRed: #b3243c;
-  --MatDark: #646464;
-}
-
 @font-face {
   font-family: "Codec-Cold";
   src: local("MyFont"), url(./fonts/Codec-Pro-Regular.ttf) format("truetype");
@@ -27,17 +19,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: "Codec-Cold", sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 #root,
 body,
-html,
-.App {
+html {
+  font-family: "Codec-Cold", sans-serif !important;
   min-height: 100%;
   min-width: 100%;
   overflow: hidden;
@@ -48,27 +33,15 @@ input {
 }
 
 a {
+  /* @apply is used to add TailwindsCSS classes inside CSS files */
   @apply text-MatBlue underline font-extrabold;
 }
 
-#edit-sidebar > .pro-sidebar-inner {
-  @apply bg-zinc-700;
-}
-
-.pro-sidebar > .pro-sidebar-inner > .pro-sidebar-layout {
-  z-index: 3 !important;
-}
-
 .custom-checkbox {
-  @apply appearance-none h-4 w-4 border border-gray-800 rounded-sm text-green-300 bg-gray-200 hover:bg-gray-500 checked:bg-green-600 checked:border-cyan-600  transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer;
-}
-
-.red-button {
-  @apply flex text-white text-xs p-2 bg-MatRed rounded w-32 justify-around items-center;
-}
-
-.red-inverse-button {
-  @apply flex text-MatRed border-[1px] border-MatRed text-xs p-2 rounded w-32 justify-around items-center;
+  @apply appearance-none h-4 w-4 border border-gray-800 rounded-sm 
+  text-green-300 bg-gray-200 hover:bg-gray-500 checked:bg-green-600 
+  checked:border-cyan-600  transition duration-200 mt-1 align-top bg-no-repeat 
+  bg-center bg-contain float-left mr-2 cursor-pointer;
 }
 
 .blue-button {
@@ -88,14 +61,16 @@ a {
 }
 
 .blue-squircle-button {
-  @apply mx-auto flex  text-xs p-2 no-underline   rounded-lg w-full max-w-lg justify-around items-center
- text-white bg-MatBlue enabled:filter
- disabled:filter-none disabled:pointer-events-none disabled:bg-MatLightTeal
+  @apply mx-auto flex  text-xs p-2 no-underline rounded-lg w-full max-w-lg 
+  justify-around items-center text-white bg-MatBlue enabled:filter
+  disabled:filter-none disabled:pointer-events-none disabled:bg-MatLightTeal
   hover:brightness-90;
 }
 
 .white-button {
-  @apply h-6 mx-auto flex text-MatBlue text-xs p-2 no-underline bg-white hover:bg-MatBlue hover:text-white border-[1px] border-MatBlue disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
+  @apply h-6 mx-auto flex text-MatBlue text-xs p-2 no-underline bg-white 
+  hover:bg-MatBlue hover:text-white border-[1px] border-MatBlue 
+  disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
 }
 
 .custom-input {
@@ -104,7 +79,8 @@ a {
 }
 
 .custom-scrollbar {
-  @apply scrollbar  rounded scrollbar-track-white hover:scrollbar-thumb-MatLightTeal scrollbar-thumb-MatLightTeal;
+  @apply scrollbar  rounded scrollbar-track-white hover:scrollbar-thumb-MatLightTeal 
+  scrollbar-thumb-MatLightTeal;
 }
 
 .custom-hover-filter:hover {

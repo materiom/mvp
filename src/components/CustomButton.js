@@ -1,10 +1,11 @@
+// Dependencies
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-function CustomButton(props) {
+export default function CustomButton(props) {
   return (
-    <Link to={props.link ? props.link : '#'} className="no-underline">
+    <Link to={props.link ? props.link : "#"} className="no-underline">
       <button
         onClick={() => props.function()}
         className={`${props.color}-button`}
@@ -15,5 +16,3 @@ function CustomButton(props) {
     </Link>
   );
 }
-
-export default CustomButton;

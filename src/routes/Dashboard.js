@@ -1,13 +1,16 @@
-// Import dependencies
+// Dependencies
 import React from "react";
-import Header from "../components/Header";
+
+// Hooks
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
-// Custom components
+// Components
 import HelpBox from "../components/HelpBox";
-
-import profilePic from "./../pictures/profile.jpg";
 import DashboardMenuItem from "../components/DashboardItem";
+import Header from "../components/Header";
+
+// Pictures
+import profilePic from "./../pictures/profile.jpg";
 
 export default function Dashboard(props) {
   // update page title

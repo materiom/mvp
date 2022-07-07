@@ -1,3 +1,4 @@
+// Dependencies
 import React, { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 
@@ -68,7 +69,7 @@ const options = [
   { label: "Petri Dish", value: "Petri Dish" },
 ];
 
-const CustomMultiSelect = () => {
+export default function CustomMultiSelect() {
   const [selected, setSelected] = useState([]);
 
   return (
@@ -83,6 +84,4 @@ const CustomMultiSelect = () => {
       />
     </div>
   );
-};
-
-export default CustomMultiSelect;
+}

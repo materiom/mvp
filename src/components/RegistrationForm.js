@@ -1,43 +1,24 @@
+// Dependencies
 import React, { useEffect, useState } from "react";
 import { FiCircle, FiEye } from "react-icons/fi";
 import { Link } from "react-router-dom";
+
+// Components
 import CustomButton from "./CustomButton";
+
+// Hooks
 import register from "../db/register";
 
-const initialState = {
-  username: "",
-  email: "",
-  password: "",
-  passwordConfirmation: "",
-};
-
-function RegistrationForm() {
+export default function RegistrationForm() {
+  // set initial state
   const [email, updateEmail] = useState("");
   const [password, updatePassword] = useState("");
   const [passwordConfirm, updatePasswordConfirm] = useState("");
   const [passwordsMatch, updatePasswordsMatch] = useState(false);
   const [showPassword, handleShowPassword] = useState(false);
 
-  const Register = async () => {
-    const rawResponse = await fetch(
-      `${process.env.REACT_APP_DB_URL}/register`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      }
-    );
-    const content = await rawResponse.json();
-
-    console.log(content);
-  };
-
+  // function to check if user password
+  // and password confirmation match
   useEffect(() => {
     if (password !== passwordConfirm) {
       updatePasswordsMatch(false);
@@ -47,19 +28,14 @@ function RegistrationForm() {
   }, [password, passwordConfirm]);
 
   useEffect(() => {
-    console.log(passwordsMatch);
-  }, [passwordsMatch]);
-
-  useEffect(() => {
-    console.log(passwordsMatch)
-
     return () => {
       // Anything in here is fired on component unmount.
-      updateEmail("")
-      updatePassword("")
-      updatePasswordConfirm("")
-      updatePasswordsMatch(false)
-      handleShowPassword(false)
+      // Cleaning up state
+      updateEmail("");
+      updatePassword("");
+      updatePasswordConfirm("");
+      updatePasswordsMatch(false);
+      handleShowPassword(false);
     };
   }, []);
 
@@ -115,6 +91,7 @@ function RegistrationForm() {
             </label>
             <input
               className="custom-input"
+              // variable in state used to toggle show password
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(event) => updatePassword(event.target.value)}
@@ -123,7 +100,12 @@ function RegistrationForm() {
           <div className="flex flex-col pb-3">
             <label className="flex items-center" htmlFor="">
               Confirm Password
-              <FiCircle className="ml-3" fill={passwordsMatch && password.length > 0 ? "#609690" : "#b3243c"} />
+              <FiCircle
+                className="ml-3"
+                fill={
+                  passwordsMatch && password.length > 0 ? "#609690" : "#b3243c"
+                }
+              />
             </label>
             <input
               className="custom-input"
@@ -153,5 +135,3 @@ function RegistrationForm() {
     </div>
   );
 }
-
-export default RegistrationForm;

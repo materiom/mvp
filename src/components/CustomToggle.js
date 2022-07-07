@@ -1,6 +1,8 @@
+// Dependencies
 import React, { useState } from "react";
 
-function CustomToggle(props) {
+export default function CustomToggle(props) {
+  // set initial state
   const [toggle, handleToggle] = useState(false);
   return (
     <div
@@ -17,5 +19,3 @@ function CustomToggle(props) {
     </div>
   );
 }
-
-export default CustomToggle;

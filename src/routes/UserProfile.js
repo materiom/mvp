@@ -1,16 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+// Dependencies
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../components/Header";
-
-import logo from "../pictures/logo.png";
-import userCover from "../pictures/directory/user-cover.png";
-import recipes from "../pictures/directory/recipes.svg";
-import industry from "../pictures/directory/industry.svg";
-import interests from "../pictures/directory/interests.svg";
-
-import { userData } from "../testUsers";
 import {
   BsChevronCompactLeft,
   BsChevronCompactRight,
@@ -18,44 +8,68 @@ import {
   BsLinkedin,
   BsTwitter,
 } from "react-icons/bs";
+
+// Components
+import Header from "../components/Header";
 import ContributeYourItemCard from "../components/contribute/ContributeYourItemCard";
 
-import { ConvertHtmlToString } from "../hooks/ConvertHtmlToString"
+// Pictures
+import logo from "../pictures/logo.png";
+import userCover from "../pictures/directory/user-cover.png";
+import recipes from "../pictures/directory/recipes.svg";
+import industry from "../pictures/directory/industry.svg";
+import interests from "../pictures/directory/interests.svg";
 
-function UserProfile() {
+// Hooks
+import { ConvertHtmlToString } from "../hooks/ConvertHtmlToString";
+import useUpdateTitle from "../hooks/UpdatePageTitle";
+
+// Dummy data
+import { userData } from "../testUsers";
+
+export default function UserProfile(props) {
+  // update page title
+  useUpdateTitle(props.title);
+
   // get parameters from the router url
   const params = useParams();
 
+  // set initial state
   const [user, updateUser] = useState({});
 
   // dummy fetch user data
   const getUser = () => {
-    const user = userData.filter((user) => user.id === params.userId);
-
-    updateUser(user[0]);
+    const userArray = userData.filter((user) => user.id === params.userId);
+    const user = userArray[0];
+    updateUser(user);
   };
   useEffect(() => getUser(), []);
 
+  // if user has interest format them and
+  // return and array of list items
+  // this is based on legacy data and the
+  // shape of the new data show make this redundant
   const interestsArray =
     user.interests === "NULL" || !user.interests
       ? ""
       : user.interests.split(",").map((item) => {
-          return <li className=" capitalize">{item}</li>;
+          return <li className="capitalize">{item}</li>;
         });
-
-  console.log(user);
 
   return (
     <div className=" w-full min-h-screen flex flex-col bg-MatLightGrey">
+      {/* Pass through a string to tell the header which tab to highlight */}
       <Header activePage="connect" />
       <div className="w-full h-[85vh] flex px-36 py-5">
         <div className="h-full flex justify-between flex-wrap w-1/3 bg-white rounded-lg">
-          {/* User profile card */}
+          {/* User profile card START*/}
           <div className="flex rounded-lg">
             <div>
+              {/* cover image */}
               <div>
                 <img src={userCover} alt="user's cover" />
               </div>
+              {/* profile picture */}
               <img
                 src={
                   user.profilePicture === "NULL"
@@ -65,6 +79,7 @@ function UserProfile() {
                 alt="profile"
                 className="rounded-full w-1/2 aspect-square mx-auto relative mt-[-25%] bg-MatLightGrey border-2 border-white"
               />
+              {/* user details START */}
               <div className=" flex flex-col w-full text-center">
                 <h4 className="text-MatTeal font-codecColdExtraBold">
                   {user.name}
@@ -94,32 +109,34 @@ function UserProfile() {
                   <h4 className=" text-MatTeal font-codecColdExtraBold mb-5">
                     About
                   </h4>
-                  <h5>{user.bio === "NULL" ? "" : ConvertHtmlToString(user.bio)}</h5>
-          
+                  <h5>
+                    {user.bio === "NULL" ? "" : ConvertHtmlToString(user.bio)}
+                  </h5>
                 </div>
               </div>
+              {/* user details END */}
             </div>
           </div>
           {/* User profile card END*/}
         </div>
         <div className="h-full flex justify-between flex-wrap w-2/3 bg-MatLightGrey">
-          {/* User's recipes and contributions */}
+          {/* User's recipes and contributions START*/}
           <div className="flex flex-col w-full h-1/2  pl-5">
             <div className="w-full h-full justify-around rounded-lg bg-white">
-            <div className="flex items-center pt-5 px-5">
-              <img src={recipes} alt="recipes icon" />
-              <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
-                Recipes {"&"} Contributions
-              </h4>
-            </div>
-            <div className="flex w-full">
-              <BsChevronCompactLeft className="my-auto text-4xl text-MatLightGrey" />
-              <ContributeYourItemCard />
-              <ContributeYourItemCard />
-              <ContributeYourItemCard />
-              <BsChevronCompactRight className="my-auto text-4xl text-MatLightGrey" />
-            </div>
-
+              <div className="flex items-center pt-5 px-5">
+                <img src={recipes} alt="recipes icon" />
+                <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
+                  Recipes {"&"} Contributions
+                </h4>
+              </div>
+              {/* Contributions carousel */}
+              <div className="flex w-full">
+                <BsChevronCompactLeft className="my-auto text-4xl text-MatLightGrey" />
+                <ContributeYourItemCard />
+                <ContributeYourItemCard />
+                <ContributeYourItemCard />
+                <BsChevronCompactRight className="my-auto text-4xl text-MatLightGrey" />
+              </div>
             </div>
           </div>
           {/* User's recipes and contributions END*/}
@@ -152,5 +169,3 @@ function UserProfile() {
     </div>
   );
 }
-
-export default UserProfile;
