@@ -1,10 +1,14 @@
+// Dependencies
 import React, { useState } from "react";
 import { BsCheck } from "react-icons/bs";
 
+// Pictures
 import bgPicture from "./../../pictures/registration.jpg";
 
-function DataSearchResultItem() {
+export default function DataSearchResultItem() {
+  // set initial state
   const [checked, handleCheck] = useState(false);
+
   return (
     <div className="flex-[1_0_22%] p-3">
       <div className="aspect-square flex flex-col items-end ">
@@ -27,5 +31,3 @@ function DataSearchResultItem() {
     </div>
   );
 }
-
-export default DataSearchResultItem;

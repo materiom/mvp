@@ -1,10 +1,12 @@
+// Dependencies
 import React, { useState } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
-import ContributeYourItemCard from "./ContributeYourItemCard";
+
+// Pictures
 import demoImage from "../../pictures/registration.jpg";
 
-function ContributePhotoCrop(props) {
+export default function ContributePhotoCrop(props) {
   const { imageToCrop, onImageCropped } = props;
 
   const [cropConfig, setCropConfig] = useState(
@@ -78,7 +80,7 @@ function ContributePhotoCrop(props) {
       onImageLoaded={(imageRef) => setImageRef(imageRef)}
       onComplete={(cropConfig) => cropImage(cropConfig)}
       onChange={(cropConfig) => setCropConfig(cropConfig)}
-      crossorigin="anonymous" // to avoid CORS-related problems
+      crossOrigin="anonymous" // to avoid CORS-related problems
     />
   );
 }
@@ -87,4 +89,3 @@ ContributePhotoCrop.defaultProps = {
   onImageCropped: () => {}
 };
 
-export default ContributePhotoCrop;

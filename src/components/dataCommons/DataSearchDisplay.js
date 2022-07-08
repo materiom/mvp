@@ -1,4 +1,7 @@
+// Dependencies
 import React from "react";
+
+// Components
 import DataSearchResultItem from "./DataSearchResultItem";
 
 export default function DataSearchDisplay() {
@@ -25,6 +28,7 @@ export default function DataSearchDisplay() {
           </div>
         </div>
         <hr className="w-full h-1 my-5 mx-auto" />
+        {/* Dummy search results */}
         <div className="flex flex-wrap w-full max-h-full overflow-y-scroll custom-scrollbar">
           <DataSearchResultItem />
           <DataSearchResultItem />

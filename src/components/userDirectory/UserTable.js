@@ -1,15 +1,18 @@
+// Dependencies
 import React from "react";
+
+// Components
 import UserTableRow from "./UserTableRow";
-import LazyLoad from "react-lazy-load"
 
 export default function UserTable(props) {
+  // dummy function to load to first 20 users
+  // and render them as an array of UserTableRows
   const tableRows = props.users.map((user, index) => {
     if (index < 20) {
-    return (
-        <UserTableRow key={user.id} user={user} />
-    );
+      return <UserTableRow key={user.id} user={user} />;
     }
   });
+
   return (
     <div className="flex flex-col  p-5 bg-white rounded-lg max-h-[75vh] ">
       <div className="flex items-center justify-between mb-5">

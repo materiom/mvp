@@ -1,7 +1,8 @@
+// Dependencies
 import React from "react";
-import { Link } from "react-router-dom";
 
-function Gallery(props) {
+export default function Gallery(props) {
+  // Function to return an array of pictures
   const galleryArray = props.gallery.map((picture) => {
     return (
       <div key={picture.src} className="flex min-w-[33%] max-w-[33%] p-5">
@@ -13,7 +14,5 @@ function Gallery(props) {
       </div>
     );
   });
-
   return <div className="w-full flex overflow-hidden">{galleryArray}</div>;
 }
-export default Gallery;

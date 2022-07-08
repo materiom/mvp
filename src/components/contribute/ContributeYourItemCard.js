@@ -1,17 +1,16 @@
+// Dependencies
 import React from "react";
-import {
-  BsEye,
-  BsEyeFill,
-  BsPencil,
-} from "react-icons/bs";
+import { BsEye, BsEyeFill, BsPencil } from "react-icons/bs";
 
+// Pictures
 import recipeImage from "../../pictures/registration.jpg";
 
-function ContributeYourItemCard() {
+export default function ContributeYourItemCard() {
   return (
     <div className="flex-col rounded-lg flex-[1_0_18%] min-w-[150px] max-w-xs aspect-square p-3 justify-end">
+      {/* ALL DUMMY DATA */}
       <div className="h-6 w-6 ml-auto rounded-full p-1 bg-MatLightGrey relative top-8 right-2 hover:bg-MatTeal hover:text-white transition duration-300">
-        <BsPencil className="h-full"/>
+        <BsPencil className="h-full" />
       </div>
       <div className="h-1/2 overflow-hidden">
         <img className=" rounded-t-lg" src={recipeImage} alt="" />
@@ -40,5 +39,3 @@ function ContributeYourItemCard() {
     </div>
   );
 }
-
-export default ContributeYourItemCard;

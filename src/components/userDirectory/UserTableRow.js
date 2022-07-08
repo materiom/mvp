@@ -1,11 +1,14 @@
+// Dependencies
 import React from "react";
+import { Link } from "react-router-dom";
+
+// Pictures
 import logo from "../../pictures/logo.png";
 import location from "../../pictures/directory/location.svg";
-import { Link } from "react-router-dom";
 
 export default function UserTableRow(props) {
   return (
-    <div >
+    <div>
       <hr className="w-full h-1 my-5 mx-auto" />
 
       <div className="flex w-full justify-between">

@@ -1,8 +1,12 @@
+// Dependencies
 import React from "react";
-import { Link } from "react-router-dom";
 
-function DifficultyIcon(props) {
+export default function DifficultyIcon(props) {
+  // set default length array as difficulty will
+  // always be between 1 and 5
   const difficultyArray = Array(5);
+  // function to render as many green dots as the
+  // difficulty level
   const difficultyIconArray = [...Array(5)].map((item, index) => {
     return (
       <div
@@ -13,9 +17,7 @@ function DifficultyIcon(props) {
       ></div>
     );
   });
-console.log(difficultyIconArray)
   return (
     <div className="w-full flex overflow-hidden">{difficultyIconArray}</div>
   );
 }
-export default DifficultyIcon;
