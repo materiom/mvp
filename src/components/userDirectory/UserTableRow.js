@@ -23,7 +23,7 @@ export default function UserTableRow(props) {
             className=" h-10 w-10 rounded-full"
           />
           <div className="flex flex-col ml-3 w-full">
-            <Link to={`/user-profile/${props.user.id}`}>
+            <Link to={`/user/profile/${props.user.id}`}>
               <h5 className="full whitespace-nowrap overflow-hidden text-ellipsis">
                 {props.user.name}
               </h5>

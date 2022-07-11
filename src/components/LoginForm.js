@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import login from "../db/login";
 
 // Components
 import CustomButton from "./CustomButton";
@@ -11,24 +12,6 @@ export default function LoginForm() {
   const [email, updateEmail] = useState("");
   const [password, updatePassword] = useState("");
 
-
-  // function to log user in
-  const Login = async () => {
-    const rawResponse = await fetch(`${process.env.REACT_APP_DB_URL}/login`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-    const content = await rawResponse.json();
-
-    console.log(content);
-  };
 
   return (
     <div
@@ -87,7 +70,7 @@ export default function LoginForm() {
           <CustomButton
             style={{ margin: "auto" }}
             displayText="Login"
-            function={() => Login()}
+            function={() => login(email, password)}
             color="blue"
           />
         </form>
