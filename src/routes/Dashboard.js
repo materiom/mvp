@@ -23,8 +23,9 @@ export default function Dashboard(props) {
         <div className="w-full flex rounded-xl bg-MatTeal h-32 items-center p-5">
           <img
             src={profilePic}
-            alt=""
-            className="h-20 w-20 rounded-full mr-5"
+            alt="profile"
+            cy-data="profile-picture"
+            className="profile-cy-TEST h-20 w-20 rounded-full mr-5"
           />
           <div className="flex flex-col">
             <h6 className="text-sm text-slate-300">Dashboard</h6>
@@ -41,7 +42,7 @@ export default function Dashboard(props) {
             />
             <DashboardMenuItem title="analyse" description={"Data Commons"} />
             <DashboardMenuItem title="connect" description={"User Directory"} />
-            <DashboardMenuItem title="edit" description={"Your Profile"} />
+            <DashboardMenuItem title="profile" description={"Your Profile"} />
           </div>
           <div className="w-1/3">
             <HelpBox />

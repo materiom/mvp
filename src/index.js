@@ -22,7 +22,7 @@ import {
   NotFound,
   NewRecipeName,
   NewRecipeFork,
-  Ingredient
+  Ingredient,
 } from "./routes";
 
 // Components
@@ -61,7 +61,11 @@ root.render(
             {/* Example of a private route */}
             <Route exact path="/" element={<PrivateRoute />}>
               {/* If user logged in the below component is returned else returns Login */}
-              <Route exact path="/" element={<Dashboard />} />
+              <Route
+                exact
+                path="/"
+                element={<Dashboard title="Dashboard - Materiom" />}
+              />
             </Route>
           </Route>
 
@@ -90,14 +94,13 @@ root.render(
               path="profile/:userId"
               element={<UserProfile title="Profile - Materiom" />}
             />
-
-            {/* Edit user profile */}
-            <Route
-              path="edit/:userId"
-              element={<EditProfile title="Edit Profile - Materiom" />}
-            />
           </Route>
 
+          {/* Edit user profile */}
+          <Route
+            path="profile"
+            element={<EditProfile title="Edit Profile - Materiom" />}
+          />
           {/* View recipe page */}
           <Route path="recipe">
             <Route
