@@ -1,6 +1,5 @@
 import React from "react";
 import UserTableRow from "./UserTableRow";
-import LazyLoad from "react-lazy-load"
 
 export default function UserTable(props) {
   const tableRows = props.users.map((user, index) => {
