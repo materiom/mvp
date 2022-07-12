@@ -8,7 +8,7 @@ import UserTable from "../components/userDirectory/UserTable";
 import Header from "../components/Header";
 
 // Dummy data
-import {userData} from "./../testUsers"
+//import {userData} from "./../testUsers"
 
 export default function UserDirectory(props) {
   // update page title
@@ -22,7 +22,8 @@ export default function UserDirectory(props) {
         <UserFilterMenu />
         </div>
         <div className="flex flex-col w-2/3 overflow-hidden ">
-          <UserTable users={userData}/>
+          {/* Commented out until real user data is available */}
+          {/* <UserTable users={userData}/> */}
         </div>
       </div>
     </div>

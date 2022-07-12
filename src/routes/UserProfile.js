@@ -1,6 +1,6 @@
 // Dependencies
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 import {
   BsChevronCompactLeft,
   BsChevronCompactRight,
@@ -25,25 +25,27 @@ import { ConvertHtmlToString } from "../hooks/ConvertHtmlToString";
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
 // Dummy data
-import { userData } from "../testUsers";
+//import { userData } from "../testUsers";
 
 export default function UserProfile(props) {
   // update page title
   useUpdateTitle(props.title);
 
   // get parameters from the router url
-  const params = useParams();
+  // const params = useParams();
 
   // set initial state
   const [user, updateUser] = useState({});
 
   // dummy fetch user data
-  const getUser = () => {
-    const userArray = userData.filter((user) => user.id === params.userId);
-    const user = userArray[0];
-    updateUser(user);
-  };
-  useEffect(() => getUser(), []);
+  // Commented out until real user data is available
+
+  // const getUser = () => {
+  //   const userArray = userData.filter((user) => user.id === params.userId);
+  //   const user = userArray[0];
+  //   updateUser(user);
+  // };
+  // useEffect(() => getUser(), []);
 
   // if user has interest format them and
   // return and array of list items
