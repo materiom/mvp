@@ -41,6 +41,7 @@ export default function RegistrationForm() {
 
   return (
     <div
+      data-cy="register-form"
       className={`flex flex-col items-center justify-between p-5 
      w-[80%] max-w-[500px] rounded-[10px] absolute
      top-[25%] left-[45%] shadow-2xl bg-white`}
@@ -48,12 +49,12 @@ export default function RegistrationForm() {
       <div className="text-left w-full">
         <h1 className="text-3xl mt-3 font-extrabold">Get Started</h1>
 
-        <h6 className=" text-sm text-gray-500">
+        <h1 className=" text-sm text-gray-500">
           Already have an account?{" "}
-          <Link className=" text-MatBlue" to="/login">
+          <Link data-cy="login-link" className=" text-MatBlue" to="/login">
             Login
           </Link>
-        </h6>
+        </h1>
       </div>
 
       <div className="flex flex-col items-center justify-center h-full w-full">
