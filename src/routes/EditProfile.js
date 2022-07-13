@@ -13,7 +13,7 @@ import ContributePhotoCrop from "../components/contribute/ContributePhotoCrop";
 import useUpdateTitle from "../hooks/UpdatePageTitle";
 
 // Pictures
-import profile from "./../pictures/profile.jpg";
+import profile from "./../pictures/profile.png";
 
 export default function EditProfile(props) {
   // update page title
@@ -40,7 +40,7 @@ export default function EditProfile(props) {
   }, [newPassword, newPasswordConfirm]);
 
   return (
-    <div className="min-h-[100vh] min-w-[100vw]">
+    <div className="min-h-[100vh] min-w-[100vw] bg-MatLightGrey">
       {/* Pass through a string to tell the header which tab to highlight */}
       <Header activePage="dashboard" />
       <ContributePhotoCrop updateNewProfilePicture={() => updateNewProfilePicture} />
@@ -53,7 +53,7 @@ export default function EditProfile(props) {
           <div className="relative">
             <img
               className="h-28 w-28 rounded-full"
-              src={newProfilePicture ? newProfilePicture : profile}
+              src={profile}
               alt="profile"
             />
             <BsPencil

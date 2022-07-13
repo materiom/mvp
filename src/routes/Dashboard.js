@@ -10,7 +10,8 @@ import DashboardMenuItem from "../components/DashboardItem";
 import Header from "../components/Header";
 
 // Pictures
-import profilePic from "./../pictures/profile.jpg";
+import profilePic from "./../pictures/profile.png";
+import { Link } from "react-router-dom";
 
 export default function Dashboard(props) {
   // update page title
@@ -21,12 +22,13 @@ export default function Dashboard(props) {
       <Header activePage={"dashboard"} />
       <div className="px-36 w-full h-full flex flex-col pt-5">
         <div className="w-full flex rounded-xl bg-MatTeal h-32 items-center p-5">
-          <img
+          <Link to="/profile" className="bg-MatLightGrey rounded-full p-1 h-20 mr-5 aspect-square"><img
             src={profilePic}
             alt="profile"
             cy-data="profile-picture"
             className="profile-cy-TEST h-20 w-20 rounded-full mr-5"
           />
+          </Link>
           <div className="flex flex-col">
             <h6 className="text-sm text-slate-300">Dashboard</h6>
             <h1 className=" text-3xl font-bold text-white">

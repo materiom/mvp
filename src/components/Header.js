@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // Pictures
 import logo from "./../pictures/full-logo.svg";
-import profile from "./../pictures/profile.jpg";
+import profile from "./../pictures/profile.png";
 
 export default function Header(props) {
   return (
@@ -73,7 +73,7 @@ export default function Header(props) {
         <Link className="text-sm text-white no-underline" to="/login">
           Sign out
         </Link>
-        <Link className="text-sm text-white no-underline" to="/edit-profile">
+        <Link className="text-sm text-white no-underline bg-MatLightGrey rounded-full p-1" to="/profile">
           <img
             src={profile}
             alt=""

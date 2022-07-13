@@ -119,9 +119,9 @@ export default function RegistrationForm() {
             <label htmlFor="term" className=" text-xs">
               {" "}
               Creating an account means you are okay with our{" "}
-              <a href="/#">Terms of Service</a>,{" "}
-              <a href="/#"> Privacy Policy</a> and out default{" "}
-              <a href="/#">Notification Setting</a>
+              <Link to="/terms">Terms of Service</Link>,{" "}
+              <Link to="/privacy-policy"> Privacy Policy</Link> and out default{" "}
+              <Link to="/notification-settings">Notification Setting</Link>
             </label>
             <input type="checkbox" className="custom-checkbox" />
           </div>

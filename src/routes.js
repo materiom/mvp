@@ -13,3 +13,10 @@ export {default as Ingredient}  from "./routes/Ingredient";
 export {default as NotFound}  from "./routes/NotFound";
 export {default as NewRecipeName}  from "./routes/new-recipe/NewRecipeName";
 export {default as NewRecipeFork}  from "./routes/new-recipe/NewRecipeFork";
+export {default as Terms}  from "./routes/Terms";
+export {default as PrivacyPolicy}  from "./routes/Terms";
+export {default as NotificationSettings}  from "./routes/Terms";
+export {default as Guide}  from "./routes/Terms";
+
+
+

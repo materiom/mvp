@@ -9,6 +9,7 @@ import logo from "./../pictures/full-logo.svg";
 
 // Hooks
 import useUpdateTitle from "../hooks/UpdatePageTitle";
+import { Link } from "react-router-dom";
 
 export default function Register(props) {
   // update page title
@@ -16,14 +17,14 @@ export default function Register(props) {
 
   return (
     <div className="flex h-screen">
-      <a href="https://materiom.org" target="_blank" rel="noreferrer">
+      <Link to="/" target="_blank" rel="noreferrer">
         <img
           src={logo}
           alt=""
           href="https://www.materiom.org"
           className=" absolute top-10 left-36"
         />
-      </a>
+      </Link>
       <div className="flex col h-full w-6/12">
         <img src={picture} alt="" className=" object-cover" />
       </div>

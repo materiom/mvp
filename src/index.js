@@ -23,6 +23,7 @@ import {
   NewRecipeName,
   NewRecipeFork,
   Ingredient,
+  Terms,
 } from "./routes";
 
 // Components
@@ -30,6 +31,9 @@ import PrivateRoute from "./components/PrivateRoute";
 
 // CSS
 import "./index.css";
+import PrivacyPolicy from "./routes/PrivacyPolicy";
+import NotificationSettings from "./routes/NotificationSettings";
+import Guide from "./routes/Guide";
 
 // React boilerplate
 const container = document.getElementById("root");
@@ -116,6 +120,34 @@ root.render(
               element={<Ingredient title="Ingredient - Materiom" />}
             />
           </Route>
+
+          {/* Terms & Conditions route NEEDS WORK */}
+
+          <Route
+            path="/terms"
+            element={<Terms title="Terms and Conditions - Materiom" />}
+          />
+
+          {/* Privacy Policy route NEEDS WORK */}
+
+          <Route
+            path="/privacy-policy"
+            element={<PrivacyPolicy title="Privacy Policy - Materiom" />}
+          />
+          
+          {/* Notification Settings route NEEDS WORK */}
+
+          <Route
+            path="/notification-settings"
+            element={<NotificationSettings title="Notification Settings - Materiom" />}
+          />
+          
+          {/* Guide route NEEDS WORK */}
+
+          <Route
+            path="/guide"
+            element={<Guide title="Contribution Guide - Materiom" />}
+          />
 
           {/* Nested route for new recipe */}
           <Route path="new-recipe">

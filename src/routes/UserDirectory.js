@@ -15,9 +15,9 @@ export default function UserDirectory(props) {
   useUpdateTitle(props.title);
 
   return (
-    <div className="overflow-hidden min-h-screen w-full flex-1 flex flex-col bg-neutral-100">
+    <div className="overflow-hidden min-h-screen w-full flex-1 flex flex-col bg-MatLightGrey">
       <Header activePage={"connect"} />
-      <div className="px-36 w-full flex h-auto overflow-hidden flex-1">
+      <div className="px-36 w-full flex h-auto overflow-hidden flex-1 py-5">
         <div className="flex flex-col w-1/3 overflow-hidden pr-5">
         <UserFilterMenu />
         </div>

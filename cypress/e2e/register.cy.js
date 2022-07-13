@@ -14,11 +14,26 @@ describe("Materiom Register Form", () => {
       });
   });
 
-  it("has working link to login", () => {
+
+  it("check all links to sites", () => {
     cy.viewport("macbook-15");
-    cy.visit("register");
-    cy.contains("Login").click();
-    cy.url().should("include", "/login");
-  });
+    cy.visit("/register");
+    cy.get('a:not([href*="mailto:"])')
+      .not('[target*="_blank"]')
+      .each((page) => {
+        const href = page.prop("href");
+        cy.visit(href);
+        cy.url().should("include", href);
+        cy.get('[data-cy="404"]')
+          .should("not.exist")
+        cy.go('back')
+      });
+    })
+  // it("has working link to login", () => {
+  //   cy.viewport("macbook-15");
+  //   cy.visit("register");
+  //   cy.contains("Login").click();
+  //   cy.url().should("include", "/login");
+  // });
 
 });
