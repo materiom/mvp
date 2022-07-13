@@ -1,5 +1,6 @@
 // Dependencies
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Pictures
 import support from "./../pictures/dashboard/support.svg";
@@ -16,26 +17,38 @@ export default function HelpBox() {
           </h5>
           <div className="flex flex-wrap">
             <div className="flex flex-1 justify-start items-center mr-3 mt-3">
-              <div className=" bg-white rounded-full p-3  hover:shadow-xl duration-300">
+              <a
+                data-cy="supportLink"
+                href="mailto:hello@materiom.org"
+                target="_blank"
+                rel="noreferrer"
+                className=" bg-white rounded-full p-3  hover:shadow-xl duration-300"
+              >
                 <img
                   className="min-w-[20px] xl:h-5 h-4"
                   src={support}
                   alt="Contact support"
                 />
-              </div>
+              </a>
               <div className="flex flex-col text-sm">
                 <h4 className="pl-4">Contact</h4>
                 <h4 className="pl-4">Support</h4>
               </div>
             </div>
             <div className="flex flex-1 justify-start items-center mt-3">
-              <div className=" bg-white rounded-full p-3 hover:shadow-xl duration-300">
+              <a
+                data-cy="twitterLink"
+                href="https://twitter.com/materiom_"
+                target="_blank"
+                rel="noreferrer"
+                className=" bg-white rounded-full p-3 hover:shadow-xl duration-300"
+              >
                 <img
                   className="min-w-[20px] xl:h-5 h-4"
                   src={twitter}
                   alt="Tweet us"
                 />
-              </div>
+              </a>
               <div className="flex flex-col">
                 <h4 className="pl-4">Tweet</h4>
                 <h4 className="pl-4">Us</h4>
@@ -49,12 +62,12 @@ export default function HelpBox() {
             Phasellus quis dui eget sapien vulputate feugiat.
           </h5>
 
-          <a
+          <Link
             className="no-underline bg-MatOrange text-white rounded-lg text-center xl:p-5 p-3"
-            href="#"
+            to="/guide"
           >
             Read guide
-          </a>
+          </Link>
         </div>
       </div>
     </div>

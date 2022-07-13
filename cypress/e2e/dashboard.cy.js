@@ -11,31 +11,42 @@ describe("Materiom Dashboard", () => {
       });
   });
 
-  it("has working link to contribution portal", () => {
+  // find all links in the page that aren't
+  // mail or external links and clicks them 
+  // and checks if they direct to the correct URL 
+  it("check all links to sites", () => {
     cy.viewport("macbook-15");
     cy.visit("/");
-    cy.contains("Make Contributions").click();
-    cy.url().should("include", "/contribute");
+    cy.get('a:not([href*="mailto:"])')
+      .not('[target*="_blank"]')
+      .each((page) => {
+        const href = page.prop("href");
+        cy.visit(href);
+        cy.url().should("include", href);
+      });
   });
 
-  it("has working link to data commons", () => {
+  // for external links best practice is to
+  // check for href and target attributes to
+  // avoid CORS
+  it("has working link to twitter", () => {
     cy.viewport("macbook-15");
     cy.visit("/");
-    cy.contains("ANALYSE").click();
-    cy.url().should("include", "/analyse");
+    cy.get('[data-cy="twitterLink"]')
+      .should("have.attr", "href", "https://twitter.com/materiom_")
+      .should("have.attr", "target", "_blank");
   });
 
-  it("has working link to user directory", () => {
+  // for email links the best we can do is check
+  // the href is correct and if that doesn't work
+  // it's probably a browser level error
+  it("has working link to open support email", () => {
     cy.viewport("macbook-15");
     cy.visit("/");
-    cy.contains("CONNECT").click();
-    cy.url().should("include", "/connect");
-  });
-
-  it("has working link to profile", () => {
-    cy.viewport("macbook-15");
-    cy.visit("/");
-    cy.contains("PROFILE").click();
-    cy.url().should("include", "/profile");
+    cy.get('[data-cy="supportLink"]').should(
+      "have.attr",
+      "href",
+      "mailto:hello@materiom.org"
+    );
   });
 });
