@@ -45,7 +45,8 @@ export default function Recipe(props) {
         // `data` is the parsed version of the JSON returned from the above endpoint.
         console.log(data);
         updateRecipe(data);
-      });
+      })
+      .catch(error => console.error)
   };
 
   // update state upon initial render
