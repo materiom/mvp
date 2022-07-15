@@ -27,7 +27,7 @@ export default function Contribute(props) {
   return (
     <div className=" w-full min-h-screen flex flex-col bg-MatNeutral">
       <Header activePage={"contribute"} />
-      <div className="px-36 w-full h-full flex flex-col">
+      <div className="px-36 w-full h-full flex flex-col py-5">
         <div className="w-full flex bg-MatLightGrey rounded-lg max-h-48">
           <div className="flex flex-col items-start p-5">
             <h1 className=" text-3xl font-bold text-MatDarkGrey">
