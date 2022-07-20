@@ -1,4 +1,7 @@
+// line below for VSCode intellisense
 ///<reference types="Cypress" />
+
+// describe the test suite
 describe("Materiom Login Form", () => {
   it("loads successfully", () => {
     cy.viewport("macbook-15");

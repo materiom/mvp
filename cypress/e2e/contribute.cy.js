@@ -1,4 +1,7 @@
+// line below for VSCode intellisense
 ///<reference types="Cypress" />
+
+// describe the test suite
 describe("Materiom Contribution Page", () => {
 
   // find all links in the page that aren't

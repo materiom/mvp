@@ -1,4 +1,7 @@
+// line below for VSCode intellisense
 ///<reference types="Cypress" />
+
+// describe the test suite
 describe("Materiom Dashboard", () => {
 
   // test to check if the response from the API exists

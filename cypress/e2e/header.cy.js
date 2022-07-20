@@ -1,4 +1,7 @@
+// line below for VSCode intellisense
 ///<reference types="Cypress" />
+
+// describe the test suite
 describe("Materiom Header", () => {
   it("loads profile picture", () => {
     cy.viewport("macbook-15");
