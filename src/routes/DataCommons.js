@@ -1,31 +1,31 @@
 // Dependencies
-import React from "react";
-import Header from "../components/Header";
+import React from 'react'
+import Header from '../components/Header'
 
 // Hooks
-import useUpdateTitle from "../hooks/UpdatePageTitle";
+import useUpdateTitle from '../hooks/UpdatePageTitle'
 
 // Components
-import DataFilterMenu from "../components/dataCommons/DataFilterMenu";
-import DataSearchBar from "../components/dataCommons/DataSearchBar";
-import DataSearchDisplay from "../components/dataCommons/DataSearchDisplay";
+import DataFilterMenu from '../components/dataCommons/DataFilterMenu'
+import DataSearchBar from '../components/dataCommons/DataSearchBar'
+import DataSearchDisplay from '../components/dataCommons/DataSearchDisplay'
 
 export default function UserDirectory(props) {
-  useUpdateTitle(props.title);
+    useUpdateTitle(props.title)
 
-  return (
-    <div className="overflow-hidden min-h-screen w-full flex-1 flex flex-col bg-neutral-100">
-      {/* Pass through a string to tell the header which tab to highlight */}
-      <Header activePage={"analyse"} />
-      <div className="px-36 w-full flex min-h-[80vh] overflow-hidden flex-1 pt-5">
-        <div className="flex flex-col h-full w-1/3 overflow-hidden pr-5">
-          <DataFilterMenu />
+    return (
+        <div className="flex min-h-screen w-full flex-1 flex-col overflow-hidden bg-neutral-100">
+            {/* Pass through a string to tell the header which tab to highlight */}
+            <Header activePage={'analyse'} />
+            <div className="flex min-h-[80vh] w-full flex-1 overflow-hidden px-36 pt-5">
+                <div className="flex h-full w-1/3 flex-col overflow-hidden pr-5">
+                    <DataFilterMenu />
+                </div>
+                <div className="flex max-h-[75vh] w-2/3 flex-col overflow-hidden rounded-b-lg">
+                    <DataSearchBar />
+                    <DataSearchDisplay />
+                </div>
+            </div>
         </div>
-        <div className="flex flex-col w-2/3 overflow-hidden max-h-[75vh] rounded-b-lg">
-          <DataSearchBar />
-          <DataSearchDisplay />
-        </div>
-      </div>
-    </div>
-  );
+    )
 }

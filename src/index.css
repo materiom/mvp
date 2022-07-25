@@ -1,18 +1,19 @@
 @font-face {
-  font-family: "Codec-Cold";
-  src: local("MyFont"), url(./fonts/Codec-Pro-Regular.ttf) format("truetype");
+    font-family: 'Codec-Cold';
+    src: local('MyFont'), url(./fonts/Codec-Pro-Regular.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Codec-Pro-Italic";
-  src: local("MyFont"), url(./fonts/Codec-Pro-Italic.ttf) format("truetype");
+    font-family: 'Codec-Pro-Italic';
+    src: local('MyFont'), url(./fonts/Codec-Pro-Italic.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Codec-Cold-Bold";
-  src: local("MyFont"), url(./fonts/Codec-Pro-Bold.ttf) format("truetype");
+    font-family: 'Codec-Cold-Bold';
+    src: local('MyFont'), url(./fonts/Codec-Pro-Bold.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Codec-Cold-Extra-Bold";
-  src: local("MyFont"), url(./fonts/Codec-Pro-Extrabold.ttf) format("truetype");
+    font-family: 'Codec-Cold-Extra-Bold';
+    src: local('MyFont'),
+        url(./fonts/Codec-Pro-Extrabold.ttf) format('truetype');
 }
 
 @tailwind base;
@@ -22,103 +23,103 @@
 #root,
 body,
 html {
-  font-family: "Codec-Cold", sans-serif !important;
-  min-height: 100%;
-  min-width: 100%;
-  overflow: hidden;
+    font-family: 'Codec-Cold', sans-serif !important;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
 }
 
 input {
-  outline: none !important;
+    outline: none !important;
 }
 
 a {
-  /* @apply is used to add TailwindsCSS classes inside CSS files */
-  @apply text-MatBlue underline font-extrabold;
+    /* @apply is used to add TailwindsCSS classes inside CSS files */
+    @apply font-extrabold text-MatBlue underline;
 }
 
 .custom-checkbox {
-  @apply appearance-none h-4 w-4 border border-gray-800 rounded-sm 
-  text-green-300 bg-gray-200 hover:bg-gray-500 checked:bg-green-600 
-  checked:border-cyan-600  transition duration-200 mt-1 align-top bg-no-repeat 
-  bg-center bg-contain float-left mr-2 cursor-pointer;
+    @apply float-left mt-1 mr-2 h-4 w-4 cursor-pointer 
+  appearance-none rounded-sm border border-gray-800 
+  bg-gray-200  bg-contain bg-center bg-no-repeat align-top text-green-300 
+  transition duration-200 checked:border-cyan-600 checked:bg-green-600 hover:bg-gray-500;
 }
 
 .blue-button {
-  @apply flex  text-xs p-2 no-underline rounded-full w-[80%]
-   max-w-lg justify-around items-center transition duration-300
-  text-white bg-MatBlue  filter
+    @apply flex  w-[80%] max-w-lg items-center justify-around rounded-full
+   bg-MatBlue p-2 text-xs text-white no-underline
+  filter transition  duration-300
   hover:brightness-90
-  disabled:filter-none disabled:pointer-events-none disabled:bg-MatLightTeal;
+  disabled:pointer-events-none disabled:bg-MatLightTeal disabled:filter-none;
 }
 
 .grey-button {
-  @apply mx-auto flex rounded-full w-[80%] max-w-lg justify-around 
-  items-center text-xs p-2 no-underline transition duration-300
-  text-MatDarkGrey bg-MatLightGrey enabled:filter
-  hover:brightness-90
+    @apply mx-auto flex w-[80%] max-w-lg items-center justify-around 
+  rounded-full bg-MatLightGrey p-2 text-xs text-MatDarkGrey no-underline
+  transition duration-300 hover:brightness-90
+  enabled:filter
   disabled:bg-MatLightGrey disabled:text-MatGrey;
 }
 
 .blue-squircle-button {
-  @apply mx-auto flex  text-xs p-2 no-underline rounded-lg w-full max-w-lg 
-  justify-around items-center text-white bg-MatBlue enabled:filter
-  disabled:filter-none disabled:pointer-events-none disabled:bg-MatLightTeal
-  hover:brightness-90;
+    @apply mx-auto flex  w-full max-w-lg items-center justify-around rounded-lg bg-MatBlue 
+  p-2 text-xs text-white no-underline hover:brightness-90
+  enabled:filter disabled:pointer-events-none disabled:bg-MatLightTeal
+  disabled:filter-none;
 }
 
 .white-button {
-  @apply h-6 mx-auto flex text-MatBlue text-xs p-2 no-underline bg-white 
-  hover:bg-MatBlue hover:text-white border-[1px] border-MatBlue 
-  disabled:bg-slate-400 rounded-full w-[80%] max-w-lg justify-around items-center;
+    @apply mx-auto flex h-6 w-[80%] max-w-lg items-center justify-around rounded-full 
+  border-[1px] border-MatBlue bg-white p-2 
+  text-xs text-MatBlue no-underline hover:bg-MatBlue hover:text-white disabled:bg-slate-400;
 }
 
 .custom-input {
-  @apply focus:shadow-none focus:ring-0 border-2 h-10
-  border-gray-200 focus:border-MatBlue rounded-lg;
+    @apply h-10 rounded-lg border-2 border-gray-200
+  focus:border-MatBlue focus:shadow-none focus:ring-0;
 }
 
 .custom-scrollbar {
-  @apply scrollbar  rounded scrollbar-track-white hover:scrollbar-thumb-MatLightTeal 
-  scrollbar-thumb-MatLightTeal;
+    @apply rounded  scrollbar scrollbar-track-white scrollbar-thumb-MatLightTeal 
+  hover:scrollbar-thumb-MatLightTeal;
 }
 
 .custom-hover-filter:hover {
-  filter: invert(51%) sepia(39%) saturate(300%) hue-rotate(124deg)
-    brightness(98%) contrast(90%);
+    filter: invert(51%) sepia(39%) saturate(300%) hue-rotate(124deg)
+        brightness(98%) contrast(90%);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-MatLightTeal rounded-full;
+    @apply rounded-full bg-MatLightTeal;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  @apply rounded-full bg-slate-200;
+    @apply rounded-full bg-slate-200;
 }
 
 .dashboard-menu-item {
-  @apply w-1/2 min-w-[300px] min-h-[250px] max-w-md max-h-96 h-1/2;
+    @apply h-1/2 max-h-96 min-h-[250px] w-1/2 min-w-[300px] max-w-md;
 }
 
 .dashboard-menu-item:nth-child(odd) {
-  @apply pb-5 pt-5 pr-5;
+    @apply pb-5 pt-5 pr-5;
 }
 
 .dashboard-menu-item:nth-child(even) {
-  @apply pb-5 pt-5 sm:pl-5 mr-auto;
+    @apply mr-auto pb-5 pt-5 sm:pl-5;
 }
 
 .dashboard-menu-inner-item {
-  @apply flex 
-  flex-col bg-white rounded-lg p-5 border-2 border-white
-  h-full justify-around items-center  min-h-[250px]
-  hover:shadow-xl hover:border-MatTeal duration-300;
+    @apply flex 
+  h-full min-h-[250px] flex-col items-center justify-around rounded-lg
+  border-2 border-white bg-white  p-5
+  duration-300 hover:border-MatTeal hover:shadow-xl;
 }
 
 .data-filter-menu-item {
-  @apply flex justify-between text-MatGrey xl:text-base text-sm;
+    @apply flex justify-between text-sm text-MatGrey xl:text-base;
 }
