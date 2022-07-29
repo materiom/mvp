@@ -4,7 +4,6 @@ import useUpdateTitle from "../hooks/UpdatePageTitle";
 
 // Components
 import UserFilterMenu from "../components/userDirectory/UserFilterMenu";
-import UserTable from "../components/userDirectory/UserTable";
 import Header from "../components/Header";
 
 // Dummy data
@@ -15,13 +14,13 @@ export default function UserDirectory(props) {
   useUpdateTitle(props.title);
 
   return (
-    <div className="overflow-hidden min-h-screen w-full flex-1 flex flex-col bg-MatLightGrey">
+    <div className="flex min-h-screen w-full flex-1 flex-col overflow-hidden bg-MatLightGrey">
       <Header activePage={"connect"} />
-      <div className="px-36 w-full flex h-auto overflow-hidden flex-1 py-5">
-        <div className="flex flex-col w-1/3 overflow-hidden pr-5">
-        <UserFilterMenu />
+      <div className="flex h-auto w-full flex-1 overflow-hidden px-36 py-5">
+        <div className="flex w-1/3 flex-col overflow-hidden pr-5">
+          <UserFilterMenu />
         </div>
-        <div className="flex flex-col w-2/3 overflow-hidden ">
+        <div className="flex w-2/3 flex-col overflow-hidden ">
           {/* Commented out until real user data is available */}
           {/* <UserTable users={userData}/> */}
         </div>

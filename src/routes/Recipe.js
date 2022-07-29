@@ -46,7 +46,7 @@ export default function Recipe(props) {
         console.log(data);
         updateRecipe(data);
       })
-      .catch(error => console.error)
+      .catch((error) => console.error);
   };
 
   // update state upon initial render
@@ -56,16 +56,17 @@ export default function Recipe(props) {
     // when the component is removed from the DOM to help
     // keep state clean
     return () => updateRecipe({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className=" w-full min-h-screen flex flex-col bg-MatLightGrey max-h-screen overflow-x-scroll custom-scrollbar">
+    <div className=" custom-scrollbar flex max-h-screen min-h-screen w-full flex-col overflow-x-scroll bg-MatLightGrey">
       <Header activePage="connect" />
 
-      <div className="h-full flex justify-between flex-wrap w-full px-36 py-10 bg-MatLightGrey custom-scrollbar">
+      <div className="custom-scrollbar flex h-full w-full flex-wrap justify-between bg-MatLightGrey px-36 py-10">
         {/* Recipe details START */}
-        <div className="flex flex-col w-full h-1/2">
-          <div className="w-full h-full justify-around rounded-lg bg-white pl-5 pt-5 pb-5">
+        <div className="flex h-1/2 w-full flex-col">
+          <div className="h-full w-full justify-around rounded-lg bg-white pl-5 pt-5 pb-5">
             <div className="flex justify-between pr-5 pb-5">
               <div className="flex flex-col items-start">
                 <h5 className="text-sm text-MatDarkGrey">
@@ -81,21 +82,21 @@ export default function Recipe(props) {
                     : "N/A"}{" "}
                   | V1
                 </h5>
-                <h4 className="capitalize font-codecColdExtraBold text-MatTeal">
+                <h4 className="font-codecColdExtraBold capitalize text-MatTeal">
                   {recipe.name}
                 </h4>
               </div>
 
-              <div className="flex rounded-lg items-center bg-MatLightGrey text-MatDarkGrey px-5 w-">
+              <div className="w- flex items-center rounded-lg bg-MatLightGrey px-5 text-MatDarkGrey">
                 <div className="flex w-1/5">
                   <h5 className="text-xl">+</h5>
                 </div>
-                <div className="border-l-2 border-white h-full flex items-center justify-center text-sm w-40">
+                <div className="flex h-full w-40 items-center justify-center border-l-2 border-white text-sm">
                   <h4>Add to favorites</h4>
                 </div>
               </div>
             </div>
-            <div className="flex w-full h-72">
+            <div className="flex h-72 w-full">
               <div className="flex w-full">
                 <div
                   className={
@@ -105,18 +106,19 @@ export default function Recipe(props) {
                 >
                   {recipe.thumbnail_src && (
                     <img
-                      className="w-full object-center object-cover min-w-full"
+                      alt="Recipe header"
+                      className="w-full min-w-full object-cover object-center"
                       src={`https://materiom.org/storage/${recipe.thumbnail_src}`}
                     />
                   )}
                 </div>
-                <div className="flex flex-col justify-around w-1/2 bg-MatLightGrey p-5">
+                <div className="flex w-1/2 flex-col justify-around bg-MatLightGrey p-5">
                   <div className="flex">
                     <div className="flex flex-col">
-                      <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                      <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                         Created by:
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
+                      <h6 className="text-xs text-MatDarkGrey">
                         {recipe.author
                           ? ConvertHtmlToString(recipe.author)
                           : "N/A"}
@@ -124,19 +126,19 @@ export default function Recipe(props) {
                     </div>
                   </div>
                   <div className="flex w-full justify-between">
-                    <div className="flex flex-col w-1/2">
-                      <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                    <div className="flex w-1/2 flex-col">
+                      <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                         Contributors
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
+                      <h6 className="text-xs text-MatDarkGrey">
                         {recipe.contributors ? recipe.contributors : "N/A"}
                       </h6>
                     </div>
-                    <div className="flex flex-col w-1/2">
-                      <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                    <div className="flex w-1/2 flex-col">
+                      <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                         Source
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
+                      <h6 className="text-xs text-MatDarkGrey">
                         {recipe.source
                           ? ConvertHtmlToString(recipe.source)
                           : "N/A"}
@@ -144,21 +146,21 @@ export default function Recipe(props) {
                     </div>
                   </div>
                   <div className="flex w-full justify-between">
-                    <div className="flex flex-col w-1/2">
-                      <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                    <div className="flex w-1/2 flex-col">
+                      <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                         License
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
+                      <h6 className="text-xs text-MatDarkGrey">
                         {recipe.license
                           ? ConvertHtmlToString(recipe.license)
                           : "N/A"}
                       </h6>
                     </div>
-                    <div className="flex flex-col w-1/2">
-                      <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                    <div className="flex w-1/2 flex-col">
+                      <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                         Difficulty
                       </h5>
-                      <h6 className="text-MatDarkGrey text-xs">
+                      <h6 className="text-xs text-MatDarkGrey">
                         {recipe.difficulty ? (
                           <DifficultyIcon difficulty={recipe.difficulty} />
                         ) : (
@@ -171,39 +173,39 @@ export default function Recipe(props) {
               </div>
             </div>
             <div className="flex pt-5">
-              <div className="flex flex-col w-full">
+              <div className="flex w-full flex-col">
                 <div className="flex flex-col">
-                  <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                  <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                     Description
                   </h5>
-                  <h6 className="text-MatDarkGrey text-xs">
+                  <h6 className="text-xs text-MatDarkGrey">
                     {recipe.description ? recipe.description : "N/A"}
                   </h6>
                 </div>
 
                 <div className="flex flex-col">
-                  <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                  <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                     Preparation time
                   </h5>
-                  <h6 className="text-MatDarkGrey text-xs flex items-center">
+                  <h6 className="flex items-center text-xs text-MatDarkGrey">
                     <img src={time} alt="time icon" className="mr-1" />
                     {recipe.prep_time ? recipe.prep_time : "N/A"}
                   </h6>
                 </div>
               </div>
-              <div className="flex flex-col w-full">
+              <div className="flex w-full flex-col">
                 <div className="flex flex-col">
-                  <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                  <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                     Tools
                   </h5>
                   {recipe.tools ? <ToolsList tools={recipe.tools} /> : "N/A"}
                 </div>
 
                 <div className="flex flex-col">
-                  <h5 className="text-MatDarkGrey font-codecColdBold text-base">
+                  <h5 className="font-codecColdBold text-base text-MatDarkGrey">
                     Process
                   </h5>
-                  <h6 className="text-MatDarkGrey text-xs">
+                  <h6 className="text-xs text-MatDarkGrey">
                     {recipe.tools ? (
                       <ProcessList processes={recipe.processes} />
                     ) : (
@@ -218,12 +220,12 @@ export default function Recipe(props) {
         {/* Recipe details END*/}
 
         {/* Recipe ingredients START */}
-        <div className="flex w-full h-1/2 pt-5">
-          <div className="w-full flex justify-start items-start rounded-lg bg-MatLightGrey">
-            <div className="flex flex-col items-start w-1/2 pt-5 px-5 h-full bg-white rounded-lg">
-              <div className="flex items-center mb-5">
+        <div className="flex h-1/2 w-full pt-5">
+          <div className="flex w-full items-start justify-start rounded-lg bg-MatLightGrey">
+            <div className="flex h-full w-1/2 flex-col items-start rounded-lg bg-white px-5 pt-5">
+              <div className="mb-5 flex items-center">
                 <img src={composition} alt="recipes icon" />
-                <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
+                <h4 className=" ml-3 font-codecColdExtraBold text-MatTeal">
                   Composition
                 </h4>
               </div>
@@ -235,12 +237,12 @@ export default function Recipe(props) {
                 )}
               </div>
             </div>
-            <div className="flex flex-col items-start w-1/2 pt-5 ml-5 px-5 h-full bg-white rounded-lg">
-              <div className="flex mb-5">
-                <div className="flex items-center mb-5">
+            <div className="ml-5 flex h-full w-1/2 flex-col items-start rounded-lg bg-white px-5 pt-5">
+              <div className="mb-5 flex">
+                <div className="mb-5 flex items-center">
                   <img src={properties} alt="interest icon" />
 
-                  <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
+                  <h4 className=" ml-3 font-codecColdExtraBold text-MatTeal">
                     Material properties
                   </h4>
                 </div>
@@ -251,17 +253,17 @@ export default function Recipe(props) {
         {/* Recipe ingredients END*/}
 
         {/* Recipe's method START*/}
-        <div className="flex flex-col w-full h-1/2">
-          <div className="w-full h-full justify-around rounded-lg bg-white mt-5 pb-5">
-            <div className="flex items-start w-full pt-5 px-5 h-full bg-white rounded-lg">
-              <div className="flex flex-col mb-5">
-                <div className="flex items-center mb-5">
+        <div className="flex h-1/2 w-full flex-col">
+          <div className="mt-5 h-full w-full justify-around rounded-lg bg-white pb-5">
+            <div className="flex h-full w-full items-start rounded-lg bg-white px-5 pt-5">
+              <div className="mb-5 flex flex-col">
+                <div className="mb-5 flex items-center">
                   <img src={method} alt="recipes icon" />
-                  <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
+                  <h4 className=" ml-3 font-codecColdExtraBold text-MatTeal">
                     Method
                   </h4>
                 </div>
-                <div className="flex flex-col w-full">
+                <div className="flex w-full flex-col">
                   <h5 className="mb-3 text-MatGrey">Steps</h5>
                   {recipe.ingredients ? (
                     <MethodList method={recipe.steps} />
@@ -276,13 +278,13 @@ export default function Recipe(props) {
         {/* Recipe's method END*/}
 
         {/* Recipe's gallery START*/}
-        <div className="flex flex-col w-full h-1/2">
-          <div className="w-full h-full justify-around rounded-lg bg-white mt-5 pb-5">
-            <div className="flex items-start w-full pt-5 px-5 h-full bg-white rounded-lg">
-              <div className="flex flex-col mb-5">
-                <div className="flex items-center mb-5">
+        <div className="flex h-1/2 w-full flex-col">
+          <div className="mt-5 h-full w-full justify-around rounded-lg bg-white pb-5">
+            <div className="flex h-full w-full items-start rounded-lg bg-white px-5 pt-5">
+              <div className="mb-5 flex flex-col">
+                <div className="mb-5 flex items-center">
                   <img src={gallery} alt="recipes icon" />
-                  <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
+                  <h4 className=" ml-3 font-codecColdExtraBold text-MatTeal">
                     Gallery images
                   </h4>
                 </div>
