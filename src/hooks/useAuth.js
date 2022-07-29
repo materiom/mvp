@@ -8,7 +8,7 @@ import { useLocalStorage } from "./useLocalStorage";
 const AuthContext = createContext();
 
 // Custom react hook to give access to AuthContext
-// used to track if user is logged in 
+// used to track if user is logged in
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useLocalStorage("user", null);
   const navigate = useNavigate();
@@ -27,8 +27,9 @@ export const AuthProvider = ({ children }) => {
     () => ({
       user,
       login,
-      logout
+      logout,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [user]
   );
 
