@@ -18,7 +18,7 @@ export default function Login(props) {
 
   return (
     <div className="flex h-screen">
-      <a href="https://materiom.org" target="_blank">
+      <a href="https://materiom.org" rel="noreferrer" target="_blank">
         <img
           src={logo}
           alt=""
@@ -26,11 +26,11 @@ export default function Login(props) {
           className=" absolute top-10 left-36"
         />
       </a>
-      <div className="flex col h-full w-6/12">
+      <div className="col flex h-full w-6/12">
         <img src={picture} alt="" className=" object-cover" />
       </div>
 
-      <div className="flex col items-center justify-center h-full w-6/12">
+      <div className="col flex h-full w-6/12 items-center justify-center">
         <LoginForm />
       </div>
       <img

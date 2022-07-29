@@ -1,10 +1,13 @@
 // Dependencies
-import React from "react";
+import React from 'react'
 
 export default function NotFound() {
-  return (
-    <h1 data-cy="404" className="m-auto text-8xl h-screen w-full text-center flex items-center justify-center">
-      🦄 NOT FOUND 😔
-    </h1>
-  );
+    return (
+        <h1
+            data-cy="404"
+            className="m-auto flex h-screen w-full items-center justify-center text-center text-8xl"
+        >
+            🦄 NOT FOUND 😔
+        </h1>
+    )
 }

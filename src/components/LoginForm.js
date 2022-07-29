@@ -1,18 +1,17 @@
-// Dependencies
+//  Dependencies
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-// Components
+//  Components
 import CustomButton from "./CustomButton";
 
 export default function LoginForm() {
-  // set initial state
+  //  set  initial  state
   const [email, updateEmail] = useState("");
   const [password, updatePassword] = useState("");
 
-
-  // function to log user in
+  //  function  to  log  user  in
   const Login = async () => {
     const rawResponse = await fetch(`${process.env.REACT_APP_DB_URL}/login`, {
       method: "POST",
@@ -33,32 +32,30 @@ export default function LoginForm() {
   return (
     <div
       data-cy="login-form"
-      className={`flex flex-col items-center justify-between p-5 
-    w-[80%] max-w-[500px] rounded-[10px] absolute
-     top-[25%] left-[45%] shadow-2xl bg-white`}
+      className={`absolute  top-[25%]  left-[45%]  flex  w-[80%]  
+        max-w-[500px]  flex-col  items-center  justify-between
+          rounded-[10px]  bg-white  p-5  shadow-2xl`}
     >
-      <div className="text-left w-full">
-        <h1 className="text-3xl mt-3 font-extrabold">Get Started</h1>
+      <div className="w-full  text-left">
+        <h1 className="mt-3  text-3xl  font-extrabold">Get Started</h1>
 
-        <h6 className=" text-sm text-gray-500">
+        <h6 className="  text-sm  text-gray-500">
           Don't have an account? <Link to="/register">Register here</Link>
         </h6>
       </div>
 
-      <div className="flex flex-col items-center justify-center h-full w-full">
-        <button className="my-5 border-[1px] border-gray-400 rounded-lg p-2 text-sm font-bold h-10 w-[75%] max-w-400px">
+      <div className="flex  h-full  w-full  flex-col  items-center  justify-center">
+        <button className="max-w-400px  my-5  h-10  w-[75%]  rounded-lg  border-[1px]  border-gray-400  p-2  text-sm  font-bold">
           Sign in with Google
         </button>
 
-        <div className="flex row w-full items-center justify-between">
-          <hr className=" bg-slate-400 w-[45%]" />
-          <h4 className=" text-slate-400">or</h4>
-          <hr className=" bg-slate-400 w-[45%]" />
+        <div className="row  flex  w-full  items-center  justify-between">
+          <hr className="  w-[45%]  bg-slate-400" />
+          <h4 className="  text-slate-400">or</h4>
+          <hr className="  w-[45%]  bg-slate-400" />
         </div>
-        <h3 className=" mr-auto my-5"></h3>
-
-        <form className="h-full flex flex-col  w-full">
-          <div className="flex flex-col pb-5">
+        <form className="flex  h-full  w-full    flex-col">
+          <div className="flex  flex-col  pb-5">
             <label htmlFor="">Email</label>
 
             <input
@@ -69,8 +66,8 @@ export default function LoginForm() {
             />
           </div>
 
-          <div className="flex flex-col pb-5">
-            <div className="flex justify-between">
+          <div className="flex  flex-col  pb-5">
+            <div className="flex  justify-between">
               <label htmlFor="">Password</label>
 
               <Link to="/password-reset">Forgotten password?</Link>

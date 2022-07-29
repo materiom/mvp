@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
-import ContributeYourItemCard from "./ContributeYourItemCard";
 import demoImage from "../../pictures/registration.jpg";
 
 function ContributePhotoCrop(props) {
@@ -12,7 +11,7 @@ function ContributePhotoCrop(props) {
     {
       unit: "%",
       width: 30,
-      aspect: 16 / 9
+      aspect: 16 / 9,
     }
   );
 
@@ -84,7 +83,7 @@ function ContributePhotoCrop(props) {
 }
 
 ContributePhotoCrop.defaultProps = {
-  onImageCropped: () => {}
+  onImageCropped: () => {},
 };
 
 export default ContributePhotoCrop;

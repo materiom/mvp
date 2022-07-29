@@ -1,42 +1,42 @@
 // Dependencies
-import React from "react";
-import RegistrationForm from "../components/RegistrationForm";
+import React from 'react'
+import RegistrationForm from '../components/RegistrationForm'
 
 // Pictures
-import picture from "./../pictures/login/background.webp";
-import pattern from "./../pictures/login/pattern.svg";
-import logo from "./../pictures/full-logo.svg";
+import picture from './../pictures/login/background.webp'
+import pattern from './../pictures/login/pattern.svg'
+import logo from './../pictures/full-logo.svg'
 
 // Hooks
-import useUpdateTitle from "../hooks/UpdatePageTitle";
-import { Link } from "react-router-dom";
+import useUpdateTitle from '../hooks/UpdatePageTitle'
+import { Link } from 'react-router-dom'
 
 export default function Register(props) {
-  // update page title
-  useUpdateTitle(props.title);
+    // update page title
+    useUpdateTitle(props.title)
 
-  return (
-    <div className="flex h-screen">
-      <Link to="/" target="_blank" rel="noreferrer">
-        <img
-          src={logo}
-          alt=""
-          href="https://www.materiom.org"
-          className=" absolute top-10 left-36"
-        />
-      </Link>
-      <div className="flex col h-full w-6/12">
-        <img src={picture} alt="" className=" object-cover" />
-      </div>
+    return (
+        <div className="flex h-screen">
+            <Link to="/" target="_blank" rel="noreferrer">
+                <img
+                    src={logo}
+                    alt=""
+                    href="https://www.materiom.org"
+                    className=" absolute top-10 left-36"
+                />
+            </Link>
+            <div className="col flex h-full w-6/12">
+                <img src={picture} alt="" className=" object-cover" />
+            </div>
 
-      <div className="flex col items-center justify-center h-full w-6/12">
-        <RegistrationForm />
-      </div>
-      <img
-        src={pattern}
-        alt=""
-        className="absolute bottom-[-50%] right-[-10%] -z-10"
-      />
-    </div>
-  );
+            <div className="col flex h-full w-6/12 items-center justify-center">
+                <RegistrationForm />
+            </div>
+            <img
+                src={pattern}
+                alt=""
+                className="absolute bottom-[-50%] right-[-10%] -z-10"
+            />
+        </div>
+    )
 }

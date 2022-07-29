@@ -1,6 +1,6 @@
 // Dependencies
-import React, { useState, useEffect } from "react";
-//import { useParams } from "react-router-dom";
+import React, { useState } from "react";
+
 import {
   BsChevronCompactLeft,
   BsChevronCompactRight,
@@ -59,11 +59,11 @@ export default function UserProfile(props) {
         });
 
   return (
-    <div className=" w-full min-h-screen flex flex-col bg-MatLightGrey">
+    <div className=" flex min-h-screen w-full flex-col bg-MatLightGrey">
       {/* Pass through a string to tell the header which tab to highlight */}
       <Header activePage="connect" />
-      <div className="w-full h-[85vh] flex px-36 py-5">
-        <div className="h-full flex justify-between flex-wrap w-1/3 bg-white rounded-lg">
+      <div className="flex h-[85vh] w-full px-36 py-5">
+        <div className="flex h-full w-1/3 flex-wrap justify-between rounded-lg bg-white">
           {/* User profile card START*/}
           <div className="flex rounded-lg">
             <div>
@@ -79,11 +79,11 @@ export default function UserProfile(props) {
                     : `https://materiom.org/storage/${user.profilePicture}`
                 }
                 alt="profile"
-                className="rounded-full w-1/2 aspect-square mx-auto relative mt-[-25%] bg-MatLightGrey border-2 border-white"
+                className="relative mx-auto mt-[-25%] aspect-square w-1/2 rounded-full border-2 border-white bg-MatLightGrey"
               />
               {/* user details START */}
-              <div className=" flex flex-col w-full text-center">
-                <h4 className="text-MatTeal font-codecColdExtraBold">
+              <div className=" flex w-full flex-col text-center">
+                <h4 className="font-codecColdExtraBold text-MatTeal">
                   {user.name}
                 </h4>
                 <a href="/#">
@@ -101,14 +101,14 @@ export default function UserProfile(props) {
                       : user.location}
                   </h5>
                 </a>
-                <div className="flex w-1/4 min-w-[100px] mx-auto my-3 justify-around text-MatTeal">
+                <div className="mx-auto my-3 flex w-1/4 min-w-[100px] justify-around text-MatTeal">
                   <BsInstagram />
                   <BsTwitter />
                   <BsLinkedin />
                 </div>
-                <hr className="w-full h-1 my-3 mx-auto" />
-                <div className="flex flex-col p-5 text-left md:max-h-[20vh] overflow-y-scroll">
-                  <h4 className=" text-MatTeal font-codecColdExtraBold mb-5">
+                <hr className="my-3 mx-auto h-1 w-full" />
+                <div className="flex flex-col overflow-y-scroll p-5 text-left md:max-h-[20vh]">
+                  <h4 className=" mb-5 font-codecColdExtraBold text-MatTeal">
                     About
                   </h4>
                   <h5>
@@ -121,13 +121,13 @@ export default function UserProfile(props) {
           </div>
           {/* User profile card END*/}
         </div>
-        <div className="h-full flex justify-between flex-wrap w-2/3 bg-MatLightGrey">
+        <div className="flex h-full w-2/3 flex-wrap justify-between bg-MatLightGrey">
           {/* User's recipes and contributions START*/}
-          <div className="flex flex-col w-full h-1/2  pl-5">
-            <div className="w-full h-full justify-around rounded-lg bg-white">
-              <div className="flex items-center pt-5 px-5">
+          <div className="flex h-1/2 w-full flex-col  pl-5">
+            <div className="h-full w-full justify-around rounded-lg bg-white">
+              <div className="flex items-center px-5 pt-5">
                 <img src={recipes} alt="recipes icon" />
-                <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
+                <h4 className=" ml-3 font-codecColdExtraBold text-MatTeal">
                   Recipes {"&"} Contributions
                 </h4>
               </div>
@@ -144,20 +144,20 @@ export default function UserProfile(props) {
           {/* User's recipes and contributions END*/}
 
           {/* User's industry and interests */}
-          <div className="flex w-full h-1/2 pt-5">
-            <div className="w-full flex justify-start items-start ml-5 rounded-lg bg-white">
-              <div className="flex items-start w-1/2 pt-5 px-5 h-full">
-                <div className="flex mb-5">
+          <div className="flex h-1/2 w-full pt-5">
+            <div className="ml-5 flex w-full items-start justify-start rounded-lg bg-white">
+              <div className="flex h-full w-1/2 items-start px-5 pt-5">
+                <div className="mb-5 flex">
                   <img src={industry} alt="recipes icon" />
-                  <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
+                  <h4 className=" ml-3 font-codecColdExtraBold text-MatTeal">
                     Industries {"&"} Disciplines
                   </h4>
                 </div>
               </div>
-              <div className="flex flex-col items-start w-1/2 pt-5 px-5 h-full border-l-2 border-MatLightGrey">
-                <div className="flex mb-5">
+              <div className="flex h-full w-1/2 flex-col items-start border-l-2 border-MatLightGrey px-5 pt-5">
+                <div className="mb-5 flex">
                   <img src={interests} alt="interest icon" />
-                  <h4 className=" font-codecColdExtraBold text-MatTeal ml-3">
+                  <h4 className=" ml-3 font-codecColdExtraBold text-MatTeal">
                     Interests
                   </h4>
                 </div>

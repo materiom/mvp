@@ -40,14 +40,15 @@ export default function Ingredient(props) {
     // when the component is removed from the DOM to help
     // keep state clean
     return () => updateIngredient({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className=" w-full min-h-screen flex flex-col bg-MatLightGrey max-h-screen overflow-x-scroll custom-scrollbar">
+    <div className=" custom-scrollbar flex max-h-screen min-h-screen w-full flex-col overflow-x-scroll bg-MatLightGrey">
       {/* Pass through a string to tell the header which tab to highlight */}
       <Header activePage="analyse" />
 
-      <div className="h-full flex justify-between flex-wrap w-full px-36 py-10 bg-MatLightGrey custom-scrollbar">
+      <div className="custom-scrollbar flex h-full w-full flex-wrap justify-between bg-MatLightGrey px-36 py-10">
         {ingredient.gallery ? (
           <img
             src={`https://materiom.org/storage/${ingredient.gallery[0].src}`}
